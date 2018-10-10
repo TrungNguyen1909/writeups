@@ -1,5 +1,6 @@
-#babyOVERFLOW
+# babyOVERFLOW
 <meta charset="UTF-8">
+
 Tên file bài này gợi ý rất nhiều.
 
 "baby" thường được dùng trong CTF chỉ những bài đơn giản dành cho người mới
@@ -53,22 +54,22 @@ Như vậy là ta có thể leak được canary 1 cách dễ dàng.
 Payload: 
 72 junk bytes.
 
-##Exploit
+## Exploit
 Stack:
 
 ```
 
 Stack Cookies------------|
 					  
------------------------------|
+-------------------------|
 
 Saved RBP----------------|
 
------------------------------|
+-------------------------|
 
-Function return address |
+Function return address--|
 
------------------------------|
+-------------------------|
 
 ```
 
