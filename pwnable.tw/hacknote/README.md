@@ -2,7 +2,7 @@
 
 The program we are going to exploit is a note program. There are 4 type of actions: Add, Delete, Print, Exit
 
-This kind of UI probably a *heap* exploitation
+This kind of UI probably a **heap** exploitation
 
 I started by try adding some notes. From small notes to big one.
 
@@ -13,10 +13,10 @@ But the program didn't read it and gave me message invalid input.
 Next I tried deleting some notes then something wrong happen.
 I found that we can delete a note as many times as we want.
 
-We can even print the note. But it just crash.
+We can even print the note. But it just Segfault.
 
 ## Bug
-This behavior is a sign of heap *use-after-free*.
+This behavior is a sign of heap **use-after-free**.
 
 ## Exploit
 
@@ -29,9 +29,7 @@ First, I tried note size at about 12 bytes. But it didn't work. Probably because
 Oh, btw, I found a new tools which is great for this type of debugging: ltrace
 
 ```
-
 ltrace -e malloc+free-@libc.so* ./hacknote
-
 ```
 
 So it printout the return result and arguments of the malloc and free so we will know what happened behind the scene.
@@ -67,13 +65,10 @@ Haizz, the plan doesn't work.
 
 The other day, after debugging, I realize that I have forgotten a wonderful thing that I found earlier.
 
-"""
+> The address of the argument(data) is put after the function location.
 
-The address of the argument(data) is put after the function location.
 
-"""
-
-SO WHAT? I put system in the func address and then "/bin/sh"
+SO WHAT? I put system in the func address and then `/bin/sh`
 sh said some syntax error, because the argument the address of the function is called is the where we put the function address.
 
 Simple. I put an ";" before `/bin/sh`, then an null byte to terminate the execute string.
