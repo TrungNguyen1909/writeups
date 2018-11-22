@@ -1,0 +1,623 @@
+install -y tmux
+/etc/bashrc
+PATH=$PATH:$1
+usr/bin/!
+/memes/
+cd /home/memes/
+chown memes:memes flag 
+exit
+cp flag.c /home/memes/
+exit
+chown memes:memes /home/memes/flag.c
+exit
+PATH=$PATH!
+ls -d .* --color=auto
+SHELL=/bin/bash
+;31:*.tbz=01;31:= "screen-256col1;31:*.Z=01;31:*.dz=01;31:*.gz=0
+tmux
+tmux
+all tumux
+tmux
+nstall -y tmux
+--
+ISO-8859-1
+wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:
+PROMPT_COMMAND
+[\u@\h \W]\$ 
+/bin
+ stdin
+memes]# !
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+MAIL=/var/spool/mail/root
+pe.sh %s
+[root@localhost memes]# ./flag
+rydump 
+SHELL=/bin/bash
+HISTSIZE=1000
+/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/root/bin
+n/id -u`
+/~}"
+caldomain
+||/usr/bin/lesspipe.sh %s
+s@%s:%s\!
+SUDO_GID=1000
+--
+%%.*}" "${PWD/#$HOME/~}"'
+file.d/l@
+exit
+mv flag /home/memes/
+#1542320976
+egrep
+lor=auto
+egrep --color=auto
+egrep
+ME/~}
+./flag
+$HOME/~}"
+5:*.mpg=!
+localhost.localdomain
+.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.!
+SHLVL=2
+vironment and startup programs, for login setup
+# Functions and aliases go in /etc/bashrc
+# It's NOT a good idea to change this file unless you know what you
+# are doing. It's much better to create a custom.sh shell script in
+# /etc/profile.d/ to make custom changes to your environment, as this
+--
+BASHOPTS
+liases:e!
+sourcepath
+memes]# !
+AME%%.*}"
+$HOME/~}"
+%s:%s\033\
+PWD=/home/memes
+en_US.UTF-8
+en_US.UTF-8
+chown memes:memes /home/memes/flag.c
+HISTFILESIZE
+HISTFILESIZE
+1000
+@%s:%s\033\\"
+:%s\033\
+ME/~
+/~}"
+1000
+SUDO_COMMAND=/bin/bash
+E/~}"
+--
+COLORS 2
+colors"
+NSOLE_DBA
+null 2> !
+OLDPWD=/opt
+=/bin/bash
+PROMPT_COMMAND
+":${PATH}:"
+etc/sysc!
+cd /home/memes/
+./flag
+ stdin
+#1542322265
+ls -la memorydump 
+fgrep --color=auto
+fgrep
+etc/sysc!
+/home/memes
+/opt
+/sbin:/b1
+oot/bin:/root/bi0
+fgrep
+lor=auto
+./flag
+rydump 
+ULfM
+mTO30
+a89f
+d (%2$s was already seen).
+sigprocmask(SIG_SETMASK, &ss, &saved_ss) >= 0
+sigprocmask(SIG_SETMASK, &saved_ss, NULL) >= 0
+getrlimit(resource, &highest) == 0
+Failed to acquire terminal: %m
+Failed to duplicate terminal fd: %m
+--
+1:*.rpm=
+rar=01;3A
+01;35:*.
+5:*.tga=!
+.svg=01;35:*a
+v=01;35:1
+01;35:*.A
+5:*.rm=0
+flv=01;3!
+01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:'
+./flag
+"\033k%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"
+{PWD/#$HOME/~}"'
+r=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:'
+MESSAGE=pci_bus 0000:1d: resource 2 [mem 0xe6f00000-0xe6ffffff 64bit pref]
+_KERNEL_DEVICE=+pci_bus:0000:1e
+_UDEV_SYSNAME=0000:1e
+_SOURCE_MONOTONIC_TIMESTAMP=272430
+MESSAGE=pci_bus 0000:1e: resource 1 [mem 0xfc500000-0xfc5fffff]
+_SOURCE_MONOTONIC_TIMESTAMP=272431
+MESSAGE=pci_bus 0000:1e: resource 2 [mem 0xe6b00000-0xe6bfffff 64bit pref]
+--
+=Dr,
+AUATUH
+]A\A]A^
+[]A\A]1
+[]A\A]1
+AWAVAUA
+t$pH
+[]A\A]A^A_
+D$X%
+l$8I
+./flag
+[Kes]# 
+selinuxsystem_u:object_r:usr_t:s0
+selinuxsystem_u:object_r:usr_t:s0
+selinuxsystem_u:object_r:usr_t:s0
+selinuxsystem_u:object_r:usr_t:s0
+selinuxsystem_u:object_r:usr_t:s0
+selinuxsystem_u:object_r:usr_t:s0
+selinuxsystem_u:object_r:usr_t:s0
+|$ H
+|$ H
+--
+ISO-8859-1
+wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:
+PROMPT_COMMAND
+[\u@\h \W]\$ 
+/bin
+ stdin
+memes]# !
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+MAIL=/var/spool/mail/root
+pe.sh %s
+[root@localhost memes]# ./flag
+rydump 
+SHELL=/bin/bash
+HISTSIZE=1000
+/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/root/bin
+n/id -u`
+/~}"
+caldomain
+||/usr/bin/lesspipe.sh %s
+s@%s:%s\!
+SUDO_GID=1000
+--
+al/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/root/bin
+%%.*}" "${PWD/#$HOME/~}"'
+file.d/l@
+exit
+mv flag /home/memes/
+#1542320976
+egrep
+lor=auto
+egrep --color=auto
+egrep
+./flag
+localdomain
+5:*.mpg=!
+localhost.localdomain
+.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.!
+SHLVL=2
+vironment and startup programs, for login setup
+# Functions and aliases go in /etc/bashrc
+# It's NOT a good idea to change this file unless you know what you
+# are doing. It's much better to create a custom.sh shell script in
+# /etc/profile.d/ to make custom changes to your environment, as this
+--
+al/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/root/bin
+%%.*}" "${PWD/#$HOME/~}"'
+file.d/l@
+exit
+mv flag /home/memes/
+#1542320976
+egrep
+lor=auto
+egrep --color=auto
+egrep
+./flag
+localdomain
+5:*.mpg=!
+localhost.localdomain
+.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.!
+SHLVL=2
+vironment and startup programs, for login setup
+# Functions and aliases go in /etc/bashrc
+# It's NOT a good idea to change this file unless you know what you
+# are doing. It's much better to create a custom.sh shell script in
+# /etc/profile.d/ to make custom changes to your environment, as this
+--
+z=01;31:
+#1542322256
+caldomain
+/etc/bashrc
+PATH=$1:$PATH
+st.localdomain
+$PATH
+colors
+/home/memes
+dump
+./flag
+colors
+dircolors"
+ls -l --color=auto
+LOGNAME=root
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+./flag
+readline stdin
+#1542322414
+./flag
+localdomain
+en_US.UTF-8
+al/sbin
+rm memorydump 
+domain
+OLDPWD=/opt
+/root/.dircolors
+chown memes:memes flag 
+auto
+unit_kill_context
+--
+bus_socket_auth_verify
+bus_socket_read_auth
+bus_socket_read_auth
+bus_get_peercred
+bus_socket_start_auth
+bus_socket_setup
+y --read-alias --show-dot --show-tilde
+#1542320976
+HOME/bin
+ME/~}
+./flag
+$HOME/~}"
+exit
+*.tif=01!
+#1542321006
+cd /home/memes
+localdomain
+*.ogm=01!
+PATH=$PATH:$1
+:*.ra=!
+grep --c!
+--
+;^uK
+`fiN
+0tTE
+0tRE
+hkVE
+@VVE
+hzVE
+hMVE
+(QVE
+SAGES"
+./flag
+@%s:%s\033\\"
+PATH=/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/root/bin
+TMUX_PANE=%1
+LOGNAME=root
+#1542322388
+LANG=en_US.UTF-8
+screen
+PWD=/home/memes
+/root/.terminfo
+[root@localhost memes]# 
+--
+*.ogx=01
+;36:*.mid=01
+:*.mpc=0a
+a=01;36:!
+rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:
+#1542322269
+checkwinsize:cmdhist:expand_aliases:extquote:force_fignore:histappend:hostcomplete:interactive_comments:login_shell:progcomp:promptvars:sourcepath
+m.sh
+which
+/bin/rm
+./flag
+"$2"
+*:"$1":*
+#1542321007
+ost opt]# 
+33\\"
+0_yE
+MESSAGE=SCSI subsystem initialized
+_SOURCE_MONOTONIC_TIMESTAMP=223470
+MESSAGE=ACPI: bus type USB registered
+_SOURCE_MONOTONIC_TIMESTAMP=223512
+--
+    object, and it is used as the underlying lock. Otherwise, a new RLock object
+    is created and used as the underlying lock.
+    
+Return true if the object is a data descriptor.
+    Data descriptors have both a __get__ and a __set__ attribute.  Examples are
+    properties (defined in Python) and getsets and members (defined in C).
+    Typically, data descriptors will also have __name__ and __doc__ attributes
+    (properties, getsets, and members have both of these attributes), but this
+    is not guaranteed.
+x86_64
+./flag
+HOSTNAME=localhost.localdomain
+TERM=screen
+SHELL=/bin/bash
+HISTSIZE=1000
+OLDPWD=/opt
+USER=root
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:
+SUDO_USER=memes
+SUDO_UID=1000
+USERNAME=root
+--
+PWD=/home/memes
+LANG=en_US.UTF-8
+TMUX_PANE=%1
+HISTCONTROL=ignoredups
+SUDO_COMMAND=/bin/bash
+SHLVL=2
+HOME=/root
+LOGNAME=root
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+SUDO_GID=1000
+_=./flag
+./flag
+ip.h
+ip.h
+5bedf38b
+ipv6.h
+dule
+df38b
+udp.h
+bedf4a4
+inetpeer.h
+;5bedf38b
+--
+ATSH
+uheL
+I;?M
+@[A\A]A^A_]
+tqeH
+GhI9Ght
+64.h
+dd.h
+intel.h
+64.h
+./flag
+HOSTNAME=localhost.localdomain
+TERM=screen
+SHELL=/bin/bash
+HISTSIZE=1000
+OLDPWD=/opt
+USER=root
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:
+SUDO_USER=memes
+SUDO_UID=1000
+USERNAME=root
+--
+PWD=/home/memes
+LANG=en_US.UTF-8
+TMUX_PANE=%1
+HISTCONTROL=ignoredups
+SUDO_COMMAND=/bin/bash
+SHLVL=2
+HOME=/root
+LOGNAME=root
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+SUDO_GID=1000
+_=./flag
+./flag
+ip.h
+ip.h
+5bedf38b
+ipv6.h
+dule
+df38b
+udp.h
+bedf4a4
+inetpeer.h
+;5bedf38b
+--
+*.ogx=01
+;36:*.mid=01
+:*.mpc=0a
+a=01;36:!
+rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:
+#1542322269
+checkwinsize:cmdhist:expand_aliases:extquote:force_fignore:histappend:hostcomplete:interactive_comments:login_shell:progcomp:promptvars:sourcepath
+m.sh
+which
+/bin/rm
+./flag
+"$2"
+*:"$1":*
+#1542321007
+ost opt]# 
+33\\"
+0_yE
+MESSAGE=SCSI subsystem initialized
+_SOURCE_MONOTONIC_TIMESTAMP=223470
+MESSAGE=ACPI: bus type USB registered
+_SOURCE_MONOTONIC_TIMESTAMP=223512
+--
+HOSTNAME=localhost.localdomain
+BASHOPTS
+BASHOPTS
+liases:e!
+sourcepath
+l7.x86_64.ko1
+\H$n
+TMUX_PANE=%0
+en_US.UTF-8
+en_US.UTF-8
+chown memes:memes /home/memes/flag.c
+HISTFILESIZE
+HISTFILESIZE
+yum install kernel-devel
+1000
+yum install make
+#1542321526
+#1542321547
+#1542321308
+elease
+1000
+--
+pu7I
+@F7I
+IV7I
+ w:I
+(L7I
+<(|)
+[?6c
+[Ccd /
+/hoe
+me/memes
+./flag
+[Dgit clone 
+yum isn
+nstall git lc
+git clone https://github.com/504ensicsLabs/LiME.git
+cd L	s	
+make
+yum install make
+amak
+make kernelrelease
+uname -r
+--
+systemd-private-0c3fab6ca2e1456f83985154e4ca7862-chronyd.service-547tMP
+systemd-private-df228fbd35754abfb7ca4d463bd882f0-chronyd.service-Qt7uK2
+hrpm-tmp.flxNys
+selinuxsystem_u:object_r:usr_t:s0
+@e{I
+@b{I
+@z{I
+cd /
+/hoe
+me/memes
+./flag
+[Bls
+rm rm
+ls -la me	
+rm me	
+[Bls
+rm mem	
+UklUU0VDe00zbTByeV9GMHIzbnMxY3N9Cg==
+UklUU0VDe00zbTByeV9GMHIzbnMxY3N9Cg==
+UklUU0VDe00zbTByeV9GMHIzbnMxY3N9Cg==
+UklUU0VDe00zbTByeV9GMHIzbnMxY3N9Cg==
+--
+/usr/share/terminfo
+ME/~
+/~}"
+AME%%.*}"
+$HOME/~}"
+#1542320976
+root
+in/id -un`"
+USERNAME=root
+#1542320976
+_=./flag
+which
+file.d/vim.sh
+PIPESTATUS
+#1542320976
+profile
+config/b
+/var/spool/mail/root
+33\\"
+PIPESTATUS
+romp
+--
+p"/K
+f+7E
+q"/K
+bp a
+q"/K
+@{SK
+[?6c
+[Ccd /
+/hoe
+me/memes
+./flag
+[Dgit clone 
+yum isn
+nstall git lc
+git clone https://github.com/504ensicsLabs/LiME.git
+cd L	s	
+make
+yum install make
+amak
+make kernelrelease
+uname -r
+--
+_SOURCE_MONOTONIC_TIMESTAMP=269293
+z>Av
+y6l44)
+Ei#<
+_SOURCE_MONOTONIC_TIMESTAMP=269295
+y6l44)
+_SOURCE_MONOTONIC_TIMESTAMP=269297
+1542322414
+X1542322p
+US.UTF-8
+./flag
+\033k%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"
+bash-prompt-default
+mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:';
+;35:*.wm
+=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:
+./flag
+OME/bin
+ysconfig/bash-prompt-default
+ER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+r=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=HISTCONTROL
+HISTCONTROL
+HISTSIZE
+HISTSIZE
+HOME
+HOME
+/root
+--
+include/linux/transport_class.h
+%s %sSCSI %d.%d MB/s %s%s%s%s%s%s%s%s (%s ns, offset %d)
+Domain Validation Initial Inquiry Failed
+Domain Validation skipping write tests
+Echo buffer size %d is too big, trimming to %d
+Extended Message, reserved code (0x%02x) 
+Identify disconnect %sallowed %s %d 
+reserved two byte (%02x %02x) 
+Synchronous Data Transfer Request
+Modify Bidirectional Data Pointer
+Linked Command Complete w/flag
+Write Buffer failure %x
+%s = %d 
+wide
+narrow
+&spi_dv_mutex(starget)
+FAST-320
+FAST-20
+FAST-10
+FAST-5
+FAST-?
+--
+HOSTNAME=localhost.localdomain
+BASHOPTS
+BASHOPTS
+liases:e!
+sourcepath
+@%s:%s\033\\"
+:%s\033\
+PWD=/home/memes
+en_US.UTF-8
+en_US.UTF-8
+chown memes:memes /home/memes/flag.c
+HISTFILESIZE
+HISTFILESIZE
+1000
+HOME/~}"
+auto
+1000
+SUDO_COMMAND=/bin/bash
+I9>n8
+t4=y
+J@;?
