@@ -89,7 +89,7 @@ What does it mean that if the function return `KERN_SUCCESS`, it is responsible 
 
 Otherwise, MIG will responsible for freeing all of it.
 
-By `mach_port_deallocate`, the listener port will be double-freed and the uref will be decreased.
+By `mach_port_deallocate`, the listener port will be double-freed (by the function and MIG) and the uref will be decreased.
 
 When the uref reaches zero, it means that all connection to that port is deallocated, the port will be freed and be reused later
 
@@ -97,7 +97,8 @@ When the uref reaches zero, it means that all connection to that port is dealloc
 > and decreased by one when it is deallocated
 
 ### Exploitation
-If we pass in the capsd port to the listener and an invalid session, the port that shelld communicates with capsd will be freed and we can attach our port to it.
+If we pass in the capsd port to the listener and an invalid session, the port that shelld communicates with capsd will be freed and we can attach our port to it by using `register_completion_handler`.
+
 => IPC Man-in-the-middle
 
 One more thing, even if we have passed capsd check, we still have the macOS Sandbox enforced to a session-name
