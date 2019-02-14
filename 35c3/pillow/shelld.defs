@@ -1,0 +1,9 @@
+#include <mach/std_types.defs>
+import "common.h";
+subsystem shelld 133700;
+type string           = c_string[*:4096];
+
+routine create_session(shelld: mach_port_t; in session: string);
+routine shell_exec(shelld: mach_port_t; in session: string; in cmd: string);
+routine register_completion_listener(shelld: mach_port_t; in session: string; listener: mach_port_t);
+routine unregister_completion_listener(shelld: mach_port_t; in session: string);
