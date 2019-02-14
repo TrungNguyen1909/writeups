@@ -89,7 +89,7 @@ What does it mean that if the function return `KERN_SUCCESS`, it is responsible 
 
 Otherwise, MIG will responsible for freeing all of it.
 
-By `mach_port_deallocate`, the listener port will be double-freed (by the function and MIG) and the uref will be decreased.
+By `mach_port_deallocate`, the listener port will be double-freed (by the function and MIG) and the uref(userspace-reference count) will be decreased.
 
 When the uref reaches zero, it means that all connection to that port is deallocated, the port will be freed and be reused later
 
