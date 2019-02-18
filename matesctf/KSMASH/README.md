@@ -96,6 +96,7 @@ mở IDA64, load kmod.ko lên, sẽ tìm thấy những điều sau
 	+ Tất cả thông tin về cách giao tiếp & những thứ khác vv thì các bạn có thể check file `exploit.c`
 	
 	+ UPD: KP trên máy nyaacate, vẫn chưa hiểu tại sao để reproduce .-.
+	+ UPD2: SMAP. bypassable = ROP cr4
 	
 ## Gotchas :)
 	+ Trong `/home/nyan`  có source của kernel module :)))
