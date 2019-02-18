@@ -95,6 +95,11 @@ mở IDA64, load kmod.ko lên, sẽ tìm thấy những điều sau
 	
 	+ Tất cả thông tin về cách giao tiếp & những thứ khác vv thì các bạn có thể check file `exploit.c`
 	
+	+ Đề bảo đọc `/root/flag`, các bạn đừng sai đề như mình nhé :<
+	
+## Gotchas :)
+	+ Trong `/home/nyan`  có source của kernel module :)))
+	
 ## Reference
 	[ROP your way to Kernel part 1](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/)
 	
