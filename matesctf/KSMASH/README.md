@@ -63,7 +63,7 @@ mở IDA64, load kmod.ko lên, sẽ tìm thấy những điều sau
 	---------------------------
 	|       Saved RIP          |
 	---------------------------
-	```
+```
 	
 - Như vậy, chúng ta có thể Leak và Defeat Stack Canary
 
@@ -95,7 +95,7 @@ mở IDA64, load kmod.ko lên, sẽ tìm thấy những điều sau
 	
 	+ Tất cả thông tin về cách giao tiếp & những thứ khác vv thì các bạn có thể check file `exploit.c`
 	
-	+ Đề bảo đọc `/root/flag`, các bạn đừng sai đề như mình nhé :<
+	+ UPD: KP trên máy nyaacate, vẫn chưa hiểu tại sao để reproduce .-.
 	
 ## Gotchas :)
 	+ Trong `/home/nyan`  có source của kernel module :)))
