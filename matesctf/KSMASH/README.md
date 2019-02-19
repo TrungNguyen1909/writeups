@@ -102,13 +102,14 @@ mở IDA64, load kmod.ko lên, sẽ tìm thấy những điều sau
 	+ Trong `/home/nyan`  có source của kernel module :)))
 	
 ## Reference
-	[ROP your way to Kernel part 1](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/)
+
+[ROP your way to Kernel part 1](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/)
 	
-	[ROP your way to Kernel part 2](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-2/)
+[ROP your way to Kernel part 2](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-2/)
 	
-	[Practical SMEP bypass techniques on Linux](https://cyseclabs.com/slides/smep_bypass.pdf)
+[Practical SMEP bypass techniques on Linux](https://cyseclabs.com/slides/smep_bypass.pdf)
 	
-	Cả 3 đều là của tác giả Vitaly Nikolenko :O
+Cả 3 đều là của tác giả Vitaly Nikolenko :O
 		
  [IRETQ]: https://www.trustwave.com/images/slblog-03-02-2018-10-57-10/spiderlabs/9ee22ecb-e195-48bd-bf16-a77ca773dd3b.png?v=0.0.1
 
