@@ -4,7 +4,7 @@
 Đây là 1 bài exploit linux kernel module của nyaacate@gmail.com host ở vòng 3 MatesCTF 2018-2019
 
 Bài này mình solve sau giờ :< nhưng vì trước khi kết thúc CTF khoảng 2hr mà chưa mình chưa thấy team nào solved bài này cả,
-nên là mình vẫn mạnh dạn gửi exploit code vào mail tác giả (no reply yet :<)
+nên là mình vẫn mạnh dạn gửi exploit code vào mail tác giả.
 
 ## Challenge Description
 
@@ -85,21 +85,23 @@ mở IDA64, load kmod.ko lên, sẽ tìm thấy những điều sau
 	![][IRETQ]
 	
 ### Notes & Issue
-	+ Chúng ta không thể để fake stack ở vị trí đầu memory page vì như vậy sẽ gây stack overflow trong kernel,
++ Chúng ta không thể để fake stack ở vị trí đầu memory page vì như vậy sẽ gây stack overflow trong kernel,
 	
-		Ta cần chọn address như là `0x60fffe00` chẳng hạn ( nói chung là đừng nhiều số 0 quá là được :))
+Ta cần chọn address như là `0x60fffe00` chẳng hạn ( nói chung là đừng nhiều số 0 quá là được :))
 	
-	+ Khi mình IRETQ về, mình bị SIGSEGV ở mọi câu lệnh mà RIP trỏ vào :< (IDKY),
++ Khi mình IRETQ về, mình bị SIGSEGV ở mọi câu lệnh mà RIP trỏ vào :< (IDKY),
 	
-		Thế nên mình đã làm 1 trò dirty bẩn bựa là handle signal SIGSEGV bằng 1 hàm, trong đó, mình để `system("/bin/sh")` :))
+Thế nên mình đã làm 1 trò dirty bẩn bựa là handle signal SIGSEGV bằng 1 hàm, trong đó, mình để `system("/bin/sh")` :))
 	
-	+ Tất cả thông tin về cách giao tiếp & những thứ khác vv thì các bạn có thể check file `exploit.c`
++ Tất cả thông tin về cách giao tiếp & những thứ khác vv thì các bạn có thể check file exploit.c
 	
-	+ UPD: KP trên máy nyaacate, vẫn chưa hiểu tại sao để reproduce .-.
-	+ UPD2: SMAP. bypassable = ROP cr4
++ KP trên các máy >= 4th Gen(Haswell) do SMAP -> bypassable = ROP cr4
++ Solution ret2usr sẽ không qua được vì từ Linux 4.15, kernel sẽ map tất tần tần userspace memory thành NX.
++ SIGSEGV khi iretq cũng là do KPTI(Kernel Page Table Isolation) (a.k.a KAISER) có từ khi patch Meltdown
+  => Resolve bằng cách ROP CR3?
 	
 ## Gotchas :)
-	+ Trong `/home/nyan`  có source của kernel module :)))
++ Trong `/home/nyan`  có source của kernel module :)))
 	
 ## Reference
 
@@ -111,6 +113,8 @@ mở IDA64, load kmod.ko lên, sẽ tìm thấy những điều sau
 	
 Cả 3 đều là của tác giả Vitaly Nikolenko :O
 		
+[Changes in Linux Kernel](https://outflux.net/blog/archives/2018/02/05/security-things-in-linux-v4-15/)
+
  [IRETQ]: https://www.trustwave.com/images/slblog-03-02-2018-10-57-10/spiderlabs/9ee22ecb-e195-48bd-bf16-a77ca773dd3b.png?v=0.0.1
 
 
