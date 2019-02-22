@@ -71,10 +71,6 @@ mở IDA64, load kmod.ko lên, sẽ tìm thấy những điều sau
 
 - Công việc còn lại là ROP để lên r00t và quay về
 	
-	+ Để thuận tiện, ta sẽ tạo ra 1 cái fake stack trên user memory bằng mmap
-	
-	+ Sử dụng ROP gadget `mov rsp, rbp; pop rbp; ret` để stack pivot
-	
 	+ Trong kernel không có gadget `mov rdi, rax` để chuyển kết quả của `prepare_kernel_cred` cho `commit_creds`,
 	tuy nhiên, vì 1 lý do nào đó, RAX lúc đó lại sẵn = RDI nên chúng ta không cần :) (dùng kernel Debugger sẽ hiểu :))
 	
