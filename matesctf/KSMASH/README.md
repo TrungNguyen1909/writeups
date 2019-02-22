@@ -1,18 +1,20 @@
-# KSMASH
+# KSMASH - Kernel Stack Smashing
+
+[Vietnamese version here](./README.vi.md)
 
 ## Background
-Đây là 1 bài exploit linux kernel module của nyaacate@gmail.com host ở vòng 3 MatesCTF 2018-2019
+This is a Linux Kernel Module(LKM) exploitation challenge by nyaacate@gmail.com host in Round 3 MatesCTF 2018-2019
 
-Bài này mình solve sau giờ :< nhưng vì trước khi kết thúc CTF khoảng 2hr mà chưa mình chưa thấy team nào solved bài này cả,
-nên là mình vẫn mạnh dạn gửi exploit code vào mail tác giả.
+I solved this challenge overtime :<
+But It seems that no team solved this so I still sent the exploit to the challenge author for testing and also wrote this writeup.
 
 ## Challenge Description
 
-Có một kernel module đang chạy, nhiệm vụ là từ non-root user escape lên r00t để đọc file `/root/flag`
+A kernel module is running, escape from non-root user to r00t to read `/root/flag`
 
 ## Reversing
 
-Kernel module có tên là kmod, bạn có thể tìm thấy file executable bằng lệnh
+Kernel module is named kmod, You can find the module using this command
 
 ```
 $ modinfo kmod
@@ -26,32 +28,32 @@ name:           kmod
 vermagic:       4.18.0-15-generic SMP mod_unload
 ```
 
-mở IDA64, load kmod.ko lên, sẽ tìm thấy những điều sau
+Fire up IDA64, load kmod.ko, It shown that
 
-- Kernel module giao tiếp bằng file /proc/havoc
+- Kernel module can be communicated through the pseudo-file `/proc/havoc`
 
-- Khi đọc từ đó, kernel module sẽ ngây thơ đọc kernel memory cho chúng ta bằng hàm careless_read
+- Read from it, the kernel module will read up the kernel stack memory for us with the function `careless_read`
 
-- Khi viết vào đó, kernel module sẽ ngây thơ viết nguyên si vào kernel memory cho chúng ta bằng hàm careless_write
+- Write to it, the kernel module will copy our data to the kernel stack memory for us with the function `careless_write` :)
 
-- Có thể thấy, 2 hàm đều đọc và viết và 1 kí tự :)
+- Both of them perform `copy_from_user/copy_to_user` for all of the input to an one-byte sized stack variable
 
-- Đây là 1 bài Buffer Overflow kernel cơ bản :)
+- This is a Simple Buffer-Overflow... but at _Kernel_ level.
 
 ### Protection : 
 
-- kASLR (kernel level Address Space Layout Randomization) : chắc là quen thuộc rồi nhỉ :) nhưng là ở kernel thôi :)
+- kASLR (kernel level Address Space Layout Randomization)
 
-- SMEP (Supervisor Mode Execution Protection) : Cơ chế bảo vệ ở CPU, không cho phép đọc instruction từ user memory :)
+- SMEP (Supervisor Mode Execution Protection) : Preventing Ring 0 from fetching instruction from userspace memory
 
 - Kernel Stack Cookies (Canary)
 
 ## Exploit Vector :
-**Từ kernel, gọi `commit_creds(prepare_kernel_cred(0))` để lên r00t rồi trở về userspace.**
+**From kernel, we need to call `commit_creds(prepare_kernel_cred(0))` to elevate privilege to r00t then return safely to userspace.**
 
-- Đầu tiên, chúng ta đọc kernel memory từ `/proc/havoc` để lấy thông tin
+- At first, we read kernel stack memory from `/proc/havoc` to have some informations
 
-- Thông tin quan trọng sẽ nằm ở offset 1
+- All important ones are located from offset 1. Below this the data layout from offset 1.
 
 ```
 	---------------------------
@@ -65,41 +67,39 @@ mở IDA64, load kmod.ko lên, sẽ tìm thấy những điều sau
 	---------------------------
 ```
 	
-- Như vậy, chúng ta có thể Leak và Defeat Stack Canary
+- Based on this, we can easily defeat Stack Canary and kASLR
 
-- Kernel ASLR defeated bằng cách tính offset từ RIP
+- Kernel ASLR can be defeated by calculating saved RIP offset.
 
-- Công việc còn lại là ROP để lên r00t và quay về
+- Last job is to elevate to r00t and then safely return back.
 	
-	+ Trong kernel không có gadget `mov rdi, rax` để chuyển kết quả của `prepare_kernel_cred` cho `commit_creds`,
-	tuy nhiên, vì 1 lý do nào đó, RAX lúc đó lại sẵn = RDI nên chúng ta không cần :) (dùng kernel Debugger sẽ hiểu :))
+	+ Although there aren't usable gadget `mov rdi, rax` to manipulate `prepare_kernel_cred` result for `commit_creds`,
+	But RAX is the same with RDI after the call for some reason so we can skip that gadget.
 	
-	+ Cuối cùng là SWAPGS xong rồi IRETQ (interrupt return) để trở về chương trình của chúng ta từ kernel
+	+ Finally do `SWAPGS` then `IRETQ` (interrupt return) to return to our exploit program from Kernel.
 	
-	IRETQ sẽ khôi phục lại một số register như là RIP, CS, RFLAGS, RSP, SS, cụ thể, nó sẽ pop từ stack như sau
+	IRETQ is responsible for recovering RIP, CS, RFLAGS, RSP, SS, Specifically, it will pop from stack like this figure.
 	
 	![][IRETQ]
 	
 ### Notes & Issue
-+ Chúng ta không thể để fake stack ở vị trí đầu memory page vì như vậy sẽ gây stack overflow trong kernel,
-	
-Ta cần chọn address như là `0x60fffe00` chẳng hạn ( nói chung là đừng nhiều số 0 quá là được :))
-	
-+ Khi mình IRETQ về, mình bị SIGSEGV ở mọi câu lệnh mà RIP trỏ vào :< (IDKY),
-	
-Thế nên mình đã làm 1 trò dirty bẩn bựa là handle signal SIGSEGV bằng 1 hàm, trong đó, mình để `system("/bin/sh")` :))
-	
-+ Tất cả thông tin về cách giao tiếp & những thứ khác vv thì các bạn có thể check file exploit.c
-	
-+ KP trên các máy >= 4th Gen(Haswell) do SMAP -> bypassable = ROP cr4
-+ Solution ret2usr sẽ không qua được vì từ Linux 4.15, kernel sẽ map tất tần tần userspace memory thành NX.
-+ SIGSEGV khi iretq cũng là do KPTI(Kernel Page Table Isolation) (a.k.a KAISER) có từ khi patch Meltdown
-  => Resolve bằng cách ROP CR3?
+
++ When `IRETQ` back, I got `SIGSEGV` on every single instruction RIP is pointed to :<
+
+So I used a cool dirty trick to handle is to handle signal SIGSEGV with a function that calls `system("/bin/sh")` :))
+
++ ret2usr can't be used since Linux 4.15, all userspace memory in kernel will be mapped as non-executable
++ `SIGSEGV` when `iretq` is caused by KPTI(Kernel Page Table Isolation) (a.k.a KAISER) which appeared since 4.15 as a patch for Meltdown
+  (Can be resolved by patching CR3?)
+  
++ Everything else should be found from `exploit.c` file
 	
 ## Gotchas :)
-+ Trong `/home/nyan`  có source của kernel module :)))
++ Source is available within the distribution in `/home/nyan`
 	
 ## Reference
+
+[Distribution](https://drive.google.com/file/d/1V4OtrqzHZc7TUr4h0VUGprnHcAoo5kp-/edit)
 
 [ROP your way to Kernel part 1](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/linux-kernel-rop-ropping-your-way-to-part-1/)
 	
@@ -107,7 +107,7 @@ Thế nên mình đã làm 1 trò dirty bẩn bựa là handle signal SIGSEGV b�
 	
 [Practical SMEP bypass techniques on Linux](https://cyseclabs.com/slides/smep_bypass.pdf)
 	
-Cả 3 đều là của tác giả Vitaly Nikolenko :O
+All 3 from Vitaly Nikolenko :O
 		
 [Changes in Linux Kernel](https://outflux.net/blog/archives/2018/02/05/security-things-in-linux-v4-15/)
 
