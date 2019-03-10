@@ -1,44 +1,48 @@
-# Kernel Debugger
+# Kernel Debugging Instruction
+
+[Vietnamese version here](./KDB.vi.md)
+
 ## Setup
 
-Mình dùng VirtualBox để debug kernel, VmWare chắc cũng làm được tương tự
+I used VirtualBox for Kernel Debugging, VMWare shoud be able to do the same thing.
 
-Vào Machine Settings -> Ports -> Serial -> Enable Serial Port
+Enter Machine Settings -> Ports -> Serial -> Enable Serial Port
 
-Port Number: Tuỳ :)))
+Port Number: Any :)))
 
-Port mode: Host Pipe
+Port mode: `Host Pipe`
 
-Connect to existing : unchecked
+Connect to existing : `unchecked`
 
-Path/Address: /tmp/vbox (placeholder purpose :))
+Path/Address: `/tmp/vbox` (placeholder purpose :))
 
-Boot Linux lên bình thường, Lấy root dùng
+Boot Linux normally, run as root
 
-`echo ttyS0,9600 > /sys/module/kgdboc/parameters/kgdboc`
+`$ echo ttyS0,9600 > /sys/module/kgdboc/parameters/kgdboc`
 
-nếu Port Number là COM1 -> ttyS0, COM2 -> ttyS1, vv
+if Port Number is COM1, use ttyS0; if it is COM2, use ttyS1... etc
 
-Sang máy khác, chạy 
+Return to the host machine, run 
 
-`socat -d -d /tmp/vbox pty &`
+`$ socat -d -d /tmp/vbox pty &`
 
-Socat sẽ chay background, output ra cái tty là debugger port.
+Socat will run in the background, output the debugger serial port tty.
 
-Lấy `/boot/vmlinuz` , extract bằng `extract-vmlinux` có trên linux source tree
+Fetch `/boot/vmlinuz` , extract with `extract-vmlinux` (available in the Linux Source Tree)
 
 ```
 gdb vmlinuz
-(gdb) target remote /dev/ttyXXX //Cái mà socat output
+(gdb) target remote /dev/ttyXXX //The one that socat outputed
 ```
 
-Enjoy
+Enjoy!
 
-## NOTES:
+## Notes
 
-- Chỉ có thể attach gdb khi vào lúc nó chuẩn bị panic :<
+- You can only attach when the kernel panic, the KDB fired up
 
-P/s: Hình như cũng có thể attach từ đầu = boot flag `kgdboc ttyS0,9600 kgdbwait` thì phải?
+P/s: Maybe we can attach from start with boot flag `kgdboc ttyS0,9600 kgdbwait`?
+But it is irrelevant for the purpose of this document so I won't discuss about it here
 
 ## Reference
   Somewhere in the internet :< Sorry
