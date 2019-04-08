@@ -1,0 +1,420 @@
+*******************************************************************************
+*                                                                             *
+*           *      * * *   * * *     * * * *   * * *      *     * * *         *
+*          * *    *       *          *     *  *          * *    *    *        *
+*         * * *   *       * * *      * * *    * * *     * * *   * * *         *
+*        *     *  *       *          *     *  *        *     *  *   *         *
+*       *       *  * * *   * * *     * * * *   * * *  *       * *     *       *
+*                                                                             *
+*************************Challenge Created By chung96vn************************
+*   Team: AceBear                                                             *
+*   My github: https://github.com/chung96vn/                                  *
+*******************************************************************************
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                                                              = 0x55dfcb541260
+Title: A
+Private:
+Size of des:
+Des: house_of_loop_mod->malloc(0)                                                                = 0x55dfcb541300
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                                                              = 0x55dfcb541320
+Title: B
+Private:
+Size of des:
+Des: house_of_loop_mod->malloc(0)                                                                = 0x55dfcb5413c0
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                                                              = 0x55dfcb5413e0
+Title: C
+Private:
+Size of des:
+Des: house_of_loop_mod->malloc(0)                                                                = 0x55dfcb541480
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                                                              = 0x55dfcb5414a0
+Title: D
+Private:
+Size of des:
+Des: house_of_loop_mod->malloc(0)                                                                = 0x55dfcb541540
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 3
+Title: B
+house_of_loop_mod->free(0x55dfcb5413c0)                                                     = <void>
+house_of_loop_mod->free(0x55dfcb541320)                                                     = <void>
+Done
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 3
+Title: C
+house_of_loop_mod->free(0x55dfcb541480)                                                     = <void>
+house_of_loop_mod->free(0x55dfcb5413e0)                                                     = <void>
+Done
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 3
+Title: D
+house_of_loop_mod->free(0x55dfcb541540)                                                     = <void>
+house_of_loop_mod->free(0x55dfcb5414a0)                                                     = <void>
+Done
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                                                              = 0x55dfcb5414a0
+Title: D
+Private:
+Size of des:
+Des: house_of_loop_mod->malloc(0)                                                                = 0x55dfcb541540
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 3
+Title: D
+house_of_loop_mod->free(0x55dfcb541540)                                                     = <void>
+house_of_loop_mod->free(0x55dfcb5414a0)                                                     = <void>
+Done
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 3
+Title: A
+house_of_loop_mod->free(0x55dfcb541300)                                                     = <void>
+house_of_loop_mod->free(0x55dfcb541260)                                                     = <void>
+Done
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                                                              = 0x55dfcb541260
+Title: A
+Private:
+Size of des:
+Des: house_of_loop_mod->malloc(0)                                                                = 0x55dfcb541300
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                                                              = 0x55dfcb5414a0
+Title:
+Private:
+Size of des:
+Des: house_of_loop_mod->malloc(0)                                                                = 0x55dfcb541540
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 2
+Note 1:
+	Title: A
+	Des: @T��U
+Note 2:
+	Title:
+	Des: �T��U
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice:
+
+
+Note 39153:
+	Title: B
+	Des:
+Note 39154:
+	Title: C
+	Des:
+Note 39155:
+	Title: D
+	Des:
+Note 39156:
+	Title: A
+	Des: ����g
+Note 39157:
+	Title: B
+	Des:
+Note 39158:
+	Title: C
+	Des:
+Note 39159:
+	Title: D
+	Des:
+Note 39160:
+	Tit^C
+root@kali:~/house_of_loop# clear
+root@kali:~/house_of_loop# ltrace -e malloc+free-@libc.so* ./house_of_loop_mod
+*******************************************************************************
+*                                                                             *
+*           *      * * *   * * *     * * * *   * * *      *     * * *         *
+*          * *    *       *          *     *  *          * *    *    *        *
+*         * * *   *       * * *      * * *    * * *     * * *   * * *         *
+*        *     *  *       *          *     *  *        *     *  *   *         *
+*       *       *  * * *   * * *     * * * *   * * *  *       * *     *       *
+*                                                                             *
+*************************Challenge Created By chung96vn************************
+*   Team: AceBear                                                             *
+*   My github: https://github.com/chung96vn/                                  *
+*******************************************************************************
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                   = 0x5555995dc260
+Title: A
+Private:
+Size of des: 4096
+Des: house_of_loop_mod->malloc(4096)                  = 0x5555995dc300
+
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                   = 0x5555995dd310
+Title: B
+Private:
+Size of des: 144
+Des: house_of_loop_mod->malloc(144)                   = 0x5555995dd3b0
+
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                   = 0x5555995dd450
+Title: C
+Private:
+Size of des: 144
+Des: house_of_loop_mod->malloc(144)                   = 0x5555995dd4f0
+
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                   = 0x5555995dd590
+Title: D
+Private:
+Size of des: 144
+Des: house_of_loop_mod->malloc(144)                   = 0x5555995dd630
+
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                   = 0x5555995dd6d0
+Title: E
+Private:
+Size of des: 144
+Des: house_of_loop_mod->malloc(144)                   = 0x5555995dd770
+
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 3
+Title: A
+house_of_loop_mod->free(0x5555995dc300)          = <void>
+house_of_loop_mod->free(0x5555995dc260)          = <void>
+Done
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 3
+Title: E
+house_of_loop_mod->free(0x5555995dd770)          = <void>
+house_of_loop_mod->free(0x5555995dd6d0)          = <void>
+Done
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 1
+house_of_loop_mod->malloc(144)                   = 0x5555995dd6d0
+Title: E
+Private:
+Size of des: 0
+Des: house_of_loop_mod->malloc(0)                     = 0x5555995dc300
+Done~
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice: 2
+Note 1:
+	Title: B
+	Des:
+Note 2:
+	Title: C
+	Des:
+Note 3:
+	Title: D
+	Des:
+Note 4:
+	Title: E
+	Des: ��\Xz
+
+************************************************
+*                                              *
+* 1 - Add Note                                 *
+* 2 - View Note                                *
+* 3 - Del Note                                 *
+* 4 - Exit                                     *
+*                                              *
+************************************************
+Your choice:
