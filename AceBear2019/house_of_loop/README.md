@@ -98,8 +98,8 @@ In the other hand, let consider the heap currently be allocated like this
 
 ```
 |    A     |   B       |      C     |      D    |
-		v          ^   v          ^   v      ^
-		└──────────┘   └──────────┘   └──────┘
+    v          ^   v          ^   v      ^
+    └──────────┘   └──────────┘   └──────┘
 ```
 A is that big chunk, D is the last one we allocated.
 
@@ -146,7 +146,7 @@ Before:
 
 ```
 |    A    | data of A(144)|     B     | data of B(144)|
-					|    crafted    |
+          |    crafted    |
 ```
 
 After:
@@ -177,21 +177,21 @@ Let's checkout this piece of code:
 
 ```c
 int del_note(){
-	//tbf_note: to be freed note
-	//prev_note: the previous note of the one we want to free
-	//s1: the title of the note we want to free
-	...
-	for ( tbf_note = first_note; tbf_note && strncmp(&s1, tbf_note->title, 0x20uLL); tbf_note = tbf_note->next_note )
-		prev_note = tbf_note;
-	if ( tbf_note )
-	{
-		if ( prev_note )
-			prev_note->next_note = tbf_note->next_note;
-		else
-			first_note = tbf_note->next_note;
-		free(tbf_note->data);
-		free(tbf_note);
-	 ...
+  //tbf_note: to be freed note
+  //prev_note: the previous note of the one we want to free
+  //s1: the title of the note we want to free
+  ...
+  for ( tbf_note = first_note; tbf_note && strncmp(&s1, tbf_note->title, 0x20uLL); tbf_note = tbf_note->next_note )
+    prev_note = tbf_note;
+  if ( tbf_note )
+  {
+    if ( prev_note )
+      prev_note->next_note = tbf_note->next_note;
+    else
+      first_note = tbf_note->next_note;
+    free(tbf_note->data);
+    free(tbf_note);
+   ...
 }
 ```
 
@@ -208,16 +208,16 @@ Before:
 
 ```
 |    A     |   B       |      C     |
-		v          ^   v          ^
-		└──────────┘   └──────────┘
+     v          ^   v          ^
+     └──────────┘   └──────────┘
 ```
 
 After:
 
 ```
 |    A     |  freed   |      C     |
-		v                        ^
-		└────────────────────────┘
+    v                        ^
+    └────────────────────────┘
 ```
 
 Basically, what it does it _unlink_ that note from the linked-list
@@ -227,8 +227,8 @@ Basically, what it does it _unlink_ that note from the linked-list
 The idea is simple,
  -  Let's make the A note to lied on somewhere near `__free_hook`
  
-			- Use the _use-after-free` vuln to make `__free_hook` address as the `next_note`
-			
+      - Use the _use-after-free` vuln to make `__free_hook` address as the `next_note`
+      
  -  Create a new note from A(Let's called it B)
  
  -  Then we _unlink_ B off the linked_list
@@ -248,7 +248,7 @@ The idea is simple,
 - chung96vn for creating this challenge(or the opportunity for me to learn heap exploit :))
 
 - [This writeup](http://eternal.red/2018/children_tcache-writeup-and-tcache-overview/)
-	
+  
 - [@ducphanduyagentP for letting me know about syms2elf](https://protegototalum.faith/post/csaw-ctf-17-qual/)
-	
+  
 - You, Yes. You, for staying till this end of this writeup :)
