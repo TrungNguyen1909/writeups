@@ -175,7 +175,7 @@ But how?
 
 Let's checkout this piece of code:
 
-```
+```c
 int del_note(){
 	//tbf_note: to be freed note
 	//prev_note: the previous note of the one we want to free
