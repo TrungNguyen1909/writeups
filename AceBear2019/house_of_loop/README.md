@@ -245,10 +245,10 @@ The idea is simple,
 
 ## A huge handclap to
 
-	chung96vn for creating this challenge(or the opportunity for me to learn heap exploit :))
+- chung96vn for creating this challenge(or the opportunity for me to learn heap exploit :))
+
+- [This writeup](http://eternal.red/2018/children_tcache-writeup-and-tcache-overview/)
 	
-	[This writeup](http://eternal.red/2018/children_tcache-writeup-and-tcache-overview/)
+- [@ducphanduyagentP for letting me know about syms2elf](https://protegototalum.faith/post/csaw-ctf-17-qual/)
 	
-	[@ducphanduyagentP for letting me know about syms2elf](https://protegototalum.faith/post/csaw-ctf-17-qual/)
-	
-	You, Yes. You, for staying till this end of this writeup :)
+- You, Yes. You, for staying till this end of this writeup :)
