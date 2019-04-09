@@ -1,6 +1,11 @@
-# KSMASH
+---
+title: "matesCTF KSMASH"
+date: 2019-02-18T16:48:13+07:00
+Tags: ["matesCTF", "CTF", "pwn","kernel","linux"]
+Language: ["Vietnamese"]
+---
 
-[English version here](./README.md)
+# KSMASH
 
 ## Background
 Đây là 1 bài exploit linux kernel module của nyaacate@gmail.com host ở vòng 3 MatesCTF 2018-2019
@@ -80,7 +85,7 @@ mở IDA64, load kmod.ko lên, sẽ tìm thấy những điều sau
 	
 	IRETQ sẽ khôi phục lại một số register như là RIP, CS, RFLAGS, RSP, SS, cụ thể, nó sẽ pop từ stack như sau
 	
-	![][IRETQ]
+	![KSMASH-01](/img/KSMASH-01.png)
 	
 ### Notes & Issue
 + Chúng ta không thể để fake stack ở vị trí đầu memory page vì như vậy sẽ gây stack overflow trong kernel,
@@ -113,6 +118,5 @@ Cả 3 đều là của tác giả Vitaly Nikolenko :O
 		
 [Changes in Linux Kernel](https://outflux.net/blog/archives/2018/02/05/security-things-in-linux-v4-15/)
 
- [IRETQ]: https://www.trustwave.com/images/slblog-03-02-2018-10-57-10/spiderlabs/9ee22ecb-e195-48bd-bf16-a77ca773dd3b.png?v=0.0.1
 
 

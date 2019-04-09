@@ -1,3 +1,10 @@
+---
+title: "RITSEC18 Yet another HR Management Framework"
+date: 2018-11-22T21:30:28+07:00
+Tags: ["RITSEC", "CTF", "pwn","heap","golang"]
+Language: ["English"]
+---
+
 By judging the program's interface, we know that it was a heap challenge.
 
 Spent quite a lot of time reversing it, I figured it out that it malloc a few bytes for the person struct on the heap, then the name will be malloc with the size entered and that address will be put in the person struct.

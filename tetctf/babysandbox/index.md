@@ -1,3 +1,10 @@
+---
+title: "TetCTF babySandbox"
+date: 2019-02-22T23:17:46+07:00
+Tags: ["TetCTF", "CTF", "pwn","sandbox","ROP","NX"]
+Language: ["English"]
+---
+
 # Baby Sandbox
 
 This is a challenge of TetCTF, which is hosted from Jan 1st to Jan 7th by MeePwn Team of Vietnam

@@ -1,6 +1,11 @@
-# Kernel Debugging Instruction
+---
+title: "Linux Kernel Debugging in VM"
+date: 2019-02-18T16:48:13+07:00
+Tags: ["debug","kernel","linux"]
+Language: ["English"]
+---
 
-[Vietnamese version here](./KDB.vi.md)
+# Kernel Debugging Instruction
 
 ## Setup
 

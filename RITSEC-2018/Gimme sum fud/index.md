@@ -1,3 +1,10 @@
+---
+title: "RITSEC18 Gimme sum fud"
+date: 2018-11-22T21:30:28+07:00
+Tags: ["RITSEC", "CTF", "pwn","golang"]
+Language: ["English"]
+---
+
 The binary loads the flag.txt to the memory and asks us to provide input.
 
 Interesting things is that it loads to the same memory segment with the input.

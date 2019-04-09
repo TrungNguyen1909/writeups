@@ -1,3 +1,10 @@
+---
+title: "RITSEC18 Bucket-o-cash"
+date: 2018-11-22T21:30:28+07:00
+Tags: ["RITSEC", "CTF", "forensics"]
+Language: ["English"]
+---
+
 By cating and grepping the file, we know that there was a file named `/home/memes/flag.c`
 
 It's probably a program, so I searched for ./flag

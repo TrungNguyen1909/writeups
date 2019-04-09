@@ -1,6 +1,11 @@
-# KSMASH - Kernel Stack Smashing
+---
+title: "matesCTF KSMASH"
+date: 2019-02-18T16:48:13+07:00
+Tags: ["matesCTF", "CTF", "pwn","kernel","linux"]
+Language: ["English"]
+---
 
-[Vietnamese version here](./README.vi.md)
+# KSMASH - Kernel Stack Smashing
 
 ## Background
 This is a Linux Kernel Module(LKM) exploitation challenge by nyaacate@gmail.com host in Round 3 MatesCTF 2018-2019
@@ -80,7 +85,7 @@ Fire up IDA64, load kmod.ko, It shown that
 	
 	IRETQ is responsible for recovering RIP, CS, RFLAGS, RSP, SS, Specifically, it will pop from stack like this figure.
 	
-	![][IRETQ]
+	![KSMASH-01](/img/KSMASH-01.png)
 	
 ### Notes & Issue
 
@@ -111,6 +116,5 @@ All 3 from Vitaly Nikolenko :O
 		
 [Changes in Linux Kernel](https://outflux.net/blog/archives/2018/02/05/security-things-in-linux-v4-15/)
 
- [IRETQ]: https://www.trustwave.com/images/slblog-03-02-2018-10-57-10/spiderlabs/9ee22ecb-e195-48bd-bf16-a77ca773dd3b.png?v=0.0.1
 
 
