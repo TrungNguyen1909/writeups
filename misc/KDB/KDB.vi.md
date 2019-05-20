@@ -17,9 +17,9 @@ Port Number: Tuỳ :)))
 
 Port mode: Host Pipe
 
-Connect to existing : unchecked
+Connect to existing : Bỏ tick
 
-Path/Address: /tmp/vbox (placeholder purpose :))
+Path/Address: /tmp/vbox
 
 Boot Linux lên bình thường, Lấy root dùng
 
@@ -27,7 +27,7 @@ Boot Linux lên bình thường, Lấy root dùng
 
 nếu Port Number là COM1 -> ttyS0, COM2 -> ttyS1, vv
 
-Sang máy khác, chạy 
+Sang máy host, chạy 
 
 `socat -d -d /tmp/vbox pty &`
 
