@@ -85,7 +85,7 @@ mở IDA64, load kmod.ko lên, sẽ tìm thấy những điều sau
 	
 	IRETQ sẽ khôi phục lại một số register như là RIP, CS, RFLAGS, RSP, SS, cụ thể, nó sẽ pop từ stack như sau
 	
-	![KSMASH-01](/img/KSMASH-01.png)
+	![KSMASH-01](/static/img/KSMASH-01.png)
 	
 ### Notes & Issue
 + Chúng ta không thể để fake stack ở vị trí đầu memory page vì như vậy sẽ gây stack overflow trong kernel,

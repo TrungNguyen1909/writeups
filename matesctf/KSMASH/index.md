@@ -85,7 +85,7 @@ Fire up IDA64, load kmod.ko, It shown that
 	
 	IRETQ is responsible for recovering RIP, CS, RFLAGS, RSP, SS, Specifically, it will pop from stack like this figure.
 	
-	![KSMASH-01](/img/KSMASH-01.png)
+	![KSMASH-01](/static/img/KSMASH-01.png)
 	
 ### Notes & Issue
 
