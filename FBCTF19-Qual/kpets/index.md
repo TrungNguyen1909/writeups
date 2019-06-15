@@ -51,26 +51,25 @@ One more thing, by reversing (which I haven't found during the CTF 😭), we can
 ```c
 int dev_write(__int64 a1, char *buf, __int64 sz)
 {
-
 	v17 = sz;
 	copy_from_user(&v19, buf + 4, 4LL);
 	if ( v19 > 0x20 )
 	{
-		printk("kpets: invalid pet name len: 0x%02x\n", v19, v3, v4, v5);
+		printk("kpets: invalid pet name len: 0x%02x\n", v19);
 		return v17;
 	}
 	copy_from_user(&v20, buf + 40, 4LL);
 	if ( v20 > 0x40 )
 	{
-		printk("kpets: invalid pet description len: 0x%02x\n", v20, v6, v7, v8);
+		printk("kpets: invalid pet description len: 0x%02x\n", v20);
 		return v17;
 	}
 	//Cut off
-	printk("kpets: your new pet owner is %s!", names[v21 % 6], v21 / 6, v21 % 6, v13);
+	printk("kpets: your new pet owner is %s!", names[v21 % 6]);
 	copy_from_user(&v18, buf, 1LL);
 	if ( (unsigned __int8)(v18 + 64) > 1u && v18 != 0xC2u )
 	{
-		printk("kpets: invalid pet type: 0x%02hhx\n", (unsigned int)(char)v18, (unsigned int)v18 + 64, v14, v15);
+		printk("kpets: invalid pet type: 0x%02hhx\n", (unsigned int)(char)v18);
 	}
 	else
 	{
@@ -91,10 +90,10 @@ The problem is in this piece of code:
 ```c
 copy_from_user(&v19, buf + 4, 4LL);
 if ( v19 > 0x20 )
-	{
-		printk("kpets: invalid pet name len: 0x%02x\n", v19, v3, v4, v5);
-		return v17;
-	}
+{
+	printk("kpets: invalid pet name len: 0x%02x\n", v19);
+	return v17;
+}
 ...
 copy_from_user(&v21, buf + 4, 4LL);
 *v10 = v18;
