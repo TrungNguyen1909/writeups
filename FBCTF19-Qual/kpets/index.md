@@ -69,7 +69,7 @@ int dev_write(__int64 a1, char *buf, __int64 sz)
 	copy_from_user(&v18, buf, 1LL);
 	if ( (unsigned __int8)(v18 + 64) > 1u && v18 != 0xC2u )
 	{
-		printk("kpets: invalid pet type: 0x%02hhx\n", (unsigned int)(char)v18);
+		printk("kpets: invalid pet type: 0x%02hhx\n", v18);
 	}
 	else
 	{
