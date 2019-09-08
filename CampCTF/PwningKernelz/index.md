@@ -51,7 +51,7 @@ thread_set_state(mach_thread_self(), x86_SAVED_STATE32, (thread_state_t) &state,
 while (1) {}
 ```
 
-You will need to compile it to a 32bit program (-m32) to make it works.
+You will need to compile it to a 32bit program `-m32` to make it works.
 
 The POC is such a simple one that it immediately hang the whole machine.
 
@@ -114,17 +114,17 @@ Following the buggy path, we can see that it repeatedly jump to the fault handle
 ```
 in the `ks_dispatch_kernel` function.
 
-It fault because it accesses data through the GS base,which currently is the user's one and pointed to the unmapped memory.
+It fault because it accesses data through the GS base, which is currently pointing to the user's GS base and access to the unmapped memory.
 
-The reason is that it's using the userspace's GS value, which have the address based at 0x0.
+The reason is that it's using the userspace's GS base has the base address at 0x0.
 
-To get over, we need to remove the _PAGEZERO segment by a linker switch, and allocate memory there with `vm_allocate` call.
+To get over, we need to remove the `_PAGEZERO` segment by a linker switch, and allocate memory there with `vm_allocate` call.
 
 Continuing with our zero-filled memory we just allocated, the kernel panic in `kernel_trap` with the error type is 13 (general protection (#GP))
 
-According to the Intel's SDM, invalid segment registers can cause a #GP fault
+According to the Intel's SDM, `iretq` with invalid segment registers can cause a #GP fault
 
-So how can we escape that?
+So how can we get over that that?
 
 A piece of code that we did not consider yet is the specific handler for #GP fault:
 
@@ -144,7 +144,7 @@ we can see that we controlled the `thread->recover` value because it's accessed 
 
 The `set_recovery_ip` set the location of the handler code in the next time the fault is occured, then we are dismissed from the fault handler.
 
-So, by the next time we `iretq`, we have control over the kernel's RIP.
+So, by the next time we `iretq` fails, we have control over the kernel's RIP.
 
 Next, I observed that we have some registers that we control over the `thread_set_state` call. One of them is the $RBP register.
 
@@ -157,15 +157,16 @@ You can find the typical privilege escalation ROP chain [here](https://bazad.git
 But there's still something to note.
 
 First, we need to bear in mind that the GS base is still in the userspace upon the start of the ROP chain,
-which causes some faulty in the `current_proc` function as it used the GS base, so we need to fix that.
+which causes some fault in the `current_proc` function as it used the GS base, so we need to fix that.
 
-Second, `thread_exception_return` will *NOT* work as the saved_state is invalid and messed up.
+Second, `thread_exception_return` will *NOT* work as the `saved_state` is invalid and messed up.
 
 Because there aren't any `swapgs` gadgets, we need to make ourselves at the userspace and return there.
 
 Before we can do that, we need to ROP to turn off SMEP by unset the 20th(0-indexed) bit of the $cr4 register.
 
-To return to the userspace, we need to set up ourselves the `iret` stack, which looks like this
+To return to the userspace, we need to set up ourselves the `iretq` stack, which looks like this
+
 ```
 
 	|--------------------------|
