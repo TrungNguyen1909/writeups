@@ -85,13 +85,13 @@ Although going through the same amount of checks, the second version forced the 
 
 In the buggy one, we can see that it allows a wider range of segment registers' value, which could be malicious.
 
-So, the bug is that we can set the segment registers' value to a malicious value.
+So, the bug is that we can set the segment registers' values to any malicious values.
 
 This is similar to the _BadIRET_ bug
 
 ## Consequences
 
-Attaching the debugger, tracing down through the 'iretq' instruction, it failed to return due to invalid segment registers and jump to the fault handler,
+Attaching the debugger, tracing down through the `iretq` instruction, it failed to return due to invalid segment registers and jump to the fault handler,
 
 Following the execution, we can observe that the fault handler does *MISS* a `swapgs` instruction.
 
@@ -107,7 +107,14 @@ Each entries contains meaningful data, one of them are the base address. And we 
 
 ## Exploit
 
-Following the buggy path, we can see that it repeatedly jump to the fault handler and always fault at the same instruction that access data through the GS base.
+Following the buggy path, we can see that it repeatedly jump to the fault handler and always fault at the same instruction
+
+```asm
+	cmp dword ptr gs:0x174, 0
+```
+in the `ks_dispatch_kernel` function.
+
+It fault because it accesses data through the GS base,which currently is the user's one and pointed to the unmapped memory.
 
 The reason is that it's using the userspace's GS value, which have the address based at 0x0.
 
