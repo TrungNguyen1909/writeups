@@ -14,7 +14,7 @@ Teleport
 
 Hi, last week I participated in Google CTF 2020 with my team `pwnPHOfun`
 
-Although I didn't solve the challenge in time for the points; 
+Although I didn't solve the challenge in time for the points, 
 still, here is a writeup for the challenge `teleport` for you.
 
 I like to write detailed articles that are understandable and replicable to my past self. Feel free to skip any parts. Here is a table of content for you.
@@ -24,7 +24,7 @@ I like to write detailed articles that are understandable and replicable to my p
 - [Teleport](#teleport)
 - [1. Story](#1-story)
 - [2. Overview](#2-overview)
-  - [2.1. Sandboxed or not sandboxed](#21-sandboxed-or-not-sandboxed)
+  - [2.1. Sandboxed or unsandboxed](#21-sandboxed-or-unsandboxed)
   - [2.2. Provided primitives](#22-provided-primitives)
 - [3. Leaking the browser process](#3-leaking-the-browser-process)
 - [4. Googling](#4-googling)
@@ -33,7 +33,7 @@ I like to write detailed articles that are understandable and replicable to my p
 - [7. Leaking ports' names](#7-leaking-ports-names)
   - [7.1. Finding offsets](#71-finding-offsets)
     - [7.1.1. Simple structures](#711-simple-structures)
-    - [7.1.2. F*ck C++/Traversing `std::unordered_map`](#712-fck-ctraversing-stdunordered_map)
+    - [7.1.2. F**k C++/Traversing `std::unordered_map`](#712-fk-ctraversing-stdunordered_map)
 - [8. What do we do with stolen ports?](#8-what-do-we-do-with-stolen-ports)
   - [8.1. Factory of network requests](#81-factory-of-network-requests)
   - [8.2. Making the leaked ports ours](#82-making-the-leaked-ports-ours)
@@ -63,26 +63,26 @@ The first one is the `Pwn` object, and a code execution(?) primitive `Mojo::rce`
 
 Both could be trivially used through `MojoJS`, which is enabled for us.
 
-## 2.1. Sandboxed or not sandboxed
+## 2.1. Sandboxed or unsandboxed
 
 On the first sight, the challenge seems unexpectedly easy, or wasn't it ;)
 
-But the `rce` primitive only provides us code execution inside the _renderer_ process, which is strictly sandboxed.
+But the `rce` primitive only provides us code execution inside the _renderer_ process, which is strictly **sandboxed**.
 
-The `Pwn` object is on the _browser_ process, and provides an address leak of itself and a memory read primitive.
+The `Pwn` object is on the **unsandboxed** _browser_ process, provides an address leak of itself and an arbitrary memory read primitive.
 
 ## 2.2. Provided primitives
 
-So we have 2 things
+So we have 2 primitives
 
 - Sandboxed code execution inside _renderer_ process
 - Arbitrary read inside _browser_ process
 
 # 3. Leaking the browser process
 
-The primitive `Pwn::this` will return the address of itself, which is a C++ object.
+The primitive `Pwn::this()` will return the address of itself, which is a C++ object.
 
-As every C++ object have its `vtable` located at offset `0x0`, by dereference the pointer returned by `Pwn::this` twice, you will get a function pointer. Subtracting it to a constant value, you can find the `_text` base of the browser's process
+As every C++ object have its `vtable`, containing pointers to all instance methods, located at offset `0x0`. By dereference the pointer returned by `Pwn::this()` twice, you will get a function pointer. Subtracting it to a constant offset, you can find the `_text` base of the browser's process.
 
 # 4. Googling
 
@@ -93,38 +93,39 @@ Which is, by itself, interesting:
 
 - Second, these words in the article is also interesting:
     > ... used from a compromised renderer
+    
     > ... if you have an info leak vulnerability in the browser process
 
 Isn't that was our case ;)
 
-Later, my teammate found [this video](https://www.youtube.com/watch?v=ugZzQvXUTIk), also by `tsuro`
+Later, my teammate found [this speech](https://www.youtube.com/watch?v=ugZzQvXUTIk), also given by Stephen
 
 Wasn't that a smart way to make people read your article and watch your talk? ;)
 
-Anyway, I highly recommend you watch those to get a basic overview of the solution and even solve it yourself.
+Anyway, I highly recommend you watch those to get a basic overview of the solution or even solve it yourself.
 
 # 5. Leaking the renderer process
 
 With the `rce` primitive in our hands, the sky is your limit...
 
-First, we want a pointer in our renderer process to be able to reuse chrome's code.
+First, we want a pointer in our renderer process to be able to reuse Chrome's code.
 
 Take a look at the `Mojo::rce` function
 
 ```cpp
-+void Mojo::rce(DOMArrayBuffer* shellcode) {
-  size_t sz = shellcode->ByteLengthAsSizeT();
-  sz += 4096;
-  sz &= ~(4096llu-1);
-  void *mm = mmap(0, sz, PROT_READ|PROT_WRITE|PROT_EXEC, MAP_ANONYMOUS|MAP_PRIVATE, -1, 0);
-  ...
-  memcpy(mm, shellcode->Data(), shellcode->ByteLengthAsSizeT());
-  void (*fn)(void) = (void (*)(void)) mm;
-  fn();
-}
+  void Mojo::rce(DOMArrayBuffer* shellcode) {
+    size_t sz = shellcode->ByteLengthAsSizeT();
+    sz += 4096;
+    sz &= ~(4096llu-1);
+    void *mm = mmap(0, sz, PROT_READ|PROT_WRITE|PROT_EXEC, MAP_ANONYMOUS|MAP_PRIVATE, -1, 0);
+    ...
+    memcpy(mm, shellcode->Data(), shellcode->ByteLengthAsSizeT());
+    void (*fn)(void) = (void (*)(void)) mm;
+    fn();
+  }
 ```
 
-So the function copy our code into a newly-allocated Read-Write-Executable(rwx) page, and then execute it right?
+So the function copy our code into a newly-allocated Read-Write-Executable(rwx) page, and then execute it, right?
 
 ```asm
    0x0000000009088315 <+277>:	mov    rdi,rbx ; dest
@@ -138,7 +139,7 @@ The above was the assembly equivalent for 3 last lines of code. There are 2 thin
 - `rbx` and `rdi` will store the address of the rwx page
 - `r15` will store the address of our original buffer
 
-This enables us to RETURN an arbitrary number of values by write to `r15+X`,
+This enables us to RETURN an arbitrary number of values from the shellcode by writing to `[r15+X]`,
 then read it back in JavaScript.
 
 For me, I read the return pointer from `[rsp]` to get a function pointer,
@@ -150,13 +151,13 @@ Node could be understood as _process_; when you launch chrome, it will spawn mul
 
 Node's name is a 128-bit random integer
 
-A node has multiple ports listening for messages, each of them has an attached endpoint which will consume the messages.
+A node has multiple local ports listening for messages; each of them has an attached endpoint which will consume the messages.
 
 Similar to node, port's name is also a 128-bit random integer
 
-A port is addressed using its node's name and its name (node:port)
+A port is addressed using its node's name and its name (`node:port`)
 
-Knowing a port's name and its node's name is equivalent to have a send right to that port.
+Knowing a port's name and its node's name is equivalent to being able to send messages to that port.
 
 > “[...] any Node can send any Message to any Port of any other Node so long as it has knowledge of the Port and Node names. [...] It is therefore important not to leak Port names into Nodes that shouldn't be granted the corresponding Capability.”
 [Security section of Mojo core](https://chromium.googlesource.com/chromium/src/+/master/mojo/core/README.md#security)
@@ -170,7 +171,7 @@ class COMPONENT_EXPORT(MOJO_CORE_PORTS) Node {
 }
 ```
 
-A [port](https://source.chromium.org/chromium/chromium/src/+/master:mojo/core/ports/port.h;bpv=1;bpt=1;l=64?gsn=Port) knows its name and its node
+A [port](https://source.chromium.org/chromium/chromium/src/+/master:mojo/core/ports/port.h;bpv=1;bpt=1;l=64?gsn=Port) knows its name and its node's name
 ```cpp
 class Port : public base::RefCountedThreadSafe<Port> {
   // The Node and Port address to which events should be routed FROM this Port.
@@ -182,7 +183,6 @@ class Port : public base::RefCountedThreadSafe<Port> {
 ```
 
 # 7. Leaking ports' names
-
 
 A node keeps track of its name, its local ports, and its remote ports (ports from another nodes that is known to this node)
 
@@ -206,7 +206,7 @@ Just traverse that and dump all the ports' names.
 
 ### 7.1.1. Simple structures
 
-Finding offsets isn't a trivial task when you haven't familiar with memory, but a way to do that is to disassemble functions where that field is used.
+Finding offsets isn't a trivial task when you haven't familiar with assembly and memory, but a way to do that is to disassemble functions where that field is accessed.
 
 *If you are experienced in finding offsets, it is okay to skip this part.*
 
@@ -235,13 +235,13 @@ The following code should be equivalent to the `if(!node_controller_)`
   0x0000000003723fcd <+29>: test rbx,rbx
 ```
 
-Or the below should be equivalent to the return
+Or the below should be equivalent to the return statement
 
 ```asm
   0x0000000003723ffd <+77>:  mov  rbx,QWORD PTR [r15+0x30]
   0x0000000003724001 <+81>:  mov  rdi,r14
   0x0000000003724004 <+84>:  call 0xa00fad0
-  0x0000000003724009 <+89>:  mov  rax,rbx
+  0x0000000003724009 <+89>:  mov  rax,rbx ; return value
   0x000000000372400c <+92>:  add  rsp,0x8
 ```
 
@@ -249,7 +249,7 @@ So the offset is probably `+0x30`.
 
 The way of finding the remaining offsets is left as an exercise to the readers.
 
-### 7.1.2. F*ck C++/Traversing `std::unordered_map`
+### 7.1.2. F**k C++/Traversing `std::unordered_map`
 
 Okay, now how do we dump all ports?
 
@@ -290,19 +290,22 @@ Continuing the path through a bunch of calculation with constants:
   0x0000000006d6c4fc <+236>: test rax,rax
 ```
 
-The second line of the above snippet is what we want to talk about.
+The second statement of the above code is what we want.
 
-`[rax+r8*8]` is an array access, with `rax` holding the base address, `r8` is probably the index and `8` is surely the element size.
+`[rax+r8*8]` is an array access, with `rax` holding the base address, `r8` is probably the array index and `8` is surely the element size.
 
 And it's definitely [this line](https://source.chromium.org/chromium/chromium/llvm-project/libcxx.git/+/78d6a7767ed57b50122a161b91f59f19c9bd0d19:include/__hash_table;drc=3c73561841650afb4718223958b4b6e86983c862;l=2492)
 ```cpp
-size_t __chash = __constrain_hash(__hash, __bc);
 __next_pointer __nd = __bucket_list_[__chash];
 ```
 
 So `__bucket_list_` is probably at offset `+0x48`
 
-At this point, it is reasonable for anyone to try to go through all non-null elements(bucket) to dump all the elements by traversing the linked list.
+An `std::unordered_map` works by calculate the `__constrain_hash()` of the key and put the element(key-value) in the equivalent bucket.
+
+Each bucket is implemented as a linked list.
+
+At this point, it is reasonable for anyone to try to iterate all non-null elements(bucket) to dump all the elements by traversing the linked list.
 
 However, this turns out to be a bad way to do so and I could even find duplicate elements and bad pointers.
 
@@ -317,7 +320,7 @@ pair<float, key_equal>                __p3_;
 
 So `__p1_.first` will be our first element (`.begin()`).
 
-With the `.begin()` pointer, it is possible to iterate through all elements just like a linked list. Inspecting the memory, you will find that `+0x10` from the `__bucket_list_` is a good educated guess for the `.begin()` pointer.
+With the `.begin()` pointer, it is possible to iterate through all elements just like a linked list. Inspecting the memory, you will find that `+0x10` from the `__bucket_list_` (`+0x58`) is a good educated guess for the `.begin()` pointer.
 
 [Reference](http://llvm.org/viewvc/llvm-project/lldb/trunk/examples/synthetic/unordered_multi.py?view=markup&pathrev=189964)
 
@@ -330,14 +333,14 @@ One of the good candidates for a good target is a _privileged_ `URLLoaderFactory
 `URLLoaderFactories` are wrapped by `CorsURLLoaderFactories`, which enforced CORS to all requests.
 
 To isolate origins, factories created with renderers cannot be used to make requests to another origins.
-However, the browser can create factories (`process_id_==kBrowserProcess`) that allow it to make arbitrary requests with no CORS enforced.
+However, the browser can create factories (`process_id_==kBrowserProcess`) allowing arbitrary network requests with no CORS enforced to be made.
 
-If we could get such a loader from the browser,  we could upload any files to our server.
+If we could get such factory from the browser,  we could upload any files to our server.
 
 > However, I noticed a code path that allows you to create a large amount of privileged URLLoaderFactories using service workers. If you create a service worker with [navigation preload](https://developers.google.com/web/updates/2017/02/navigation-preload) enabled, every top-level navigation would [create such a loader](https://cs.chromium.org/chromium/src/content/browser/service_worker/service_worker_fetch_dispatcher.cc?l=334&rcl=a129610c20b22dd77f65f137d88fc37dd1eb064f). By simply creating a number of iframes and stalling the requests on the server side, you can keep a few thousand loaders alive at the same time. 
 > @_tsuro
 
-To do so is pretty trivial, just make sure to use HTTPS and you are good to go.
+To do so is pretty trivial, just make sure to use HTTPS and you are good to go with the service worker.
 
 ## 8.2. Making the leaked ports ours
 
@@ -350,7 +353,7 @@ After doing that, the leaked port will be inserted into your node's `ports_` map
 
 ### 8.2.1. Calling functions from shellcode
 
-It is impractical to run an assembler to compile your shellcode with the functions' addresses, providing that they shift around all the time under ASLR.
+It is impractical to run an assembler in the exploit to compile your shellcode with the functions' addresses, as they shift around all the time under ASLR.
 
 There are probably many ways of doing this, including [ways](https://github.com/xerub/acorn) that allow you to call functions directly from JavaScript.
 However, I will stick to the assembly this time and use the `Mojo::rce` primitive.
@@ -362,7 +365,7 @@ In my shellcode, there will be a common pattern, which looks like this
   call rax
 ```
 
-The `0x4141414141414141` value will be encoded as 8 consecutive little-endian bytes in the machine code. The JavaScript will be responsible to replace it with the correct address calculated from the leak.
+The `0x4141414141414141` value will be encoded as it as 8 consecutive little-endian bytes in the machine code. The JavaScript code will be responsible to replace it with the correct address calculated from the leak.
 
 ## 8.3. Sending our messages
 
@@ -384,14 +387,14 @@ which creates handles for our newly-created ports.
 
 Later, I found the function [`mojo::WriteMessageRaw`](https://source.chromium.org/chromium/chromium/src/+/master:mojo/public/cpp/system/message_pipe.cc;drc=6e8b402a6231405b753919029c9027404325ea00;bpv=1;bpt=1;l=13?gsn=WriteMessageRaw), which takes our port's `MojoHandle`, message buffer, and an array of `MojoHandles`(?) and send the message.
 
-Unfortunately, it takes a C++ object [`MessagePipeHandle`](https://source.chromium.org/chromium/chromium/src/+/master:mojo/public/cpp/system/message_pipe.h;drc=6e8b402a6231405b753919029c9027404325ea00;bpv=1;bpt=1;l=30?gsn=MessagePipeHandle), which is not so easy to create. So all I can do was replicate its behavior.
+Unfortunately, it takes a C++ object [`MessagePipeHandle`](https://source.chromium.org/chromium/chromium/src/+/master:mojo/public/cpp/system/message_pipe.h;drc=6e8b402a6231405b753919029c9027404325ea00;bpv=1;bpt=1;l=30?gsn=MessagePipeHandle), which is not so easy to create. So all I can do was replicate its function calls.
 
 ## 8.4. Writing our messages
-If you take a look at the binding JS code (i.e. `URLLoaderFactoryProxy.prototype.createLoaderAndStart`), you will see that it uses the API `MessageV0Builder` to craft a message. That function will return a `Message` object, which contains a buffer, and an array of handles.
+If you take a look at the binding JS code (i.e. `URLLoaderFactoryProxy.prototype.createLoaderAndStart`), you will see that it uses the JavaScript API `MessageV0Builder` to craft a message. That function will return a `Message` object, which contains a buffer, and an array of handles.
 
 Our message obviously should contain the buffer, but what are the handles?
 
-The function `URLLoaderFactory::CreateLoaderAndStart` has 2 special parameters: `mojo::PendingReceiver<mojom::URLLoader> receiver` and `mojo::PendingRemote<mojom::URLLoaderClient> client`.  `PendingReceiver` and `PendingRemote` indicate that these are shared objects, which are used through ports.
+The function `URLLoaderFactory::CreateLoaderAndStart` has 2 special parameters: `mojo::PendingReceiver<mojom::URLLoader> receiver` and `mojo::PendingRemote<mojom::URLLoaderClient> client`.  `PendingReceiver` and `PendingRemote` indicate that these are shared objects, which are accessed through ports.
 
 To pass these objects as parameters, you need to pass their handles, just 2 `uint32_t` to `Core::AppendMessageData`.
 
@@ -399,7 +402,7 @@ If you inspect the message generated by `MessageV0Builder`, its array of handles
 
 So we need to pass 2 handles, an `InterfaceRequest` and an `Ptr`. But how do we figure them out?
 
-Here is the code to create a client
+Here is the code to create a `URLLoaderClient`
 ```js
   var client = new network.mojom.URLLoaderClientPtr();
   Mojo.bindInterface(
@@ -427,23 +430,23 @@ It seems to create a MessagePipe, which will create 2 `MojoHandles`: `handle0` a
 - `handle0` is binded to the passed `Ptr` 
 - `handle1` is binded to a newly created `InterfaceRequest`
 
-Lucky to us, handles are [generated increasingly](https://source.chromium.org/chromium/chromium/src/+/master:mojo/core/handle_table.cc;drc=6e8b402a6231405b753919029c9027404325ea00;l=56). So we are able to predict the handles of the `Ptr` and `InterfaceRequest` from the handle of our port.
+Lucky to us, handles are [generated increasingly](https://source.chromium.org/chromium/chromium/src/+/master:mojo/core/handle_table.cc;drc=6e8b402a6231405b753919029c9027404325ea00;l=56). So we can predict the handles of the `Ptr` and `InterfaceRequest` from the handle of our port.
 
 ## 8.5. To know who our receivers are
 
 While creating this exploit, I ran into a programming bug which prevents my message buffer being copied. This leads me to discover a way to know which object is behind the port:
 
-By sending an invalid message (set [the first `uint32_t`(`header_size`)](https://source.chromium.org/chromium/chromium/src/+/master:mojo/public/cpp/bindings/lib/validation_util.cc;drc=6e8b402a6231405b753919029c9027404325ea00;bpv=1;bpt=1;l=30?q=ValidateStructHeader&ss=chromium%2Fchromium%2Fsrc&gsn=ValidateStructHeaderAndClaimMemory) 0), you can trigger a validation error at [this line](https://source.chromium.org/chromium/chromium/src/+/master:mojo/public/cpp/bindings/lib/validation_util.cc;drc=6e8b402a6231405b753919029c9027404325ea00;l=45) and the verbose logging willl print something like this
+By sending an invalid message (set [the first `uint32_t` (`num_bytes`)](https://source.chromium.org/chromium/chromium/src/+/master:mojo/public/cpp/bindings/lib/validation_util.cc;drc=6e8b402a6231405b753919029c9027404325ea00;bpv=1;bpt=1;l=30?q=ValidateStructHeader&ss=chromium%2Fchromium%2Fsrc&gsn=ValidateStructHeaderAndClaimMemory) to 0), you can trigger a validation error at [this line](https://source.chromium.org/chromium/chromium/src/+/master:mojo/public/cpp/bindings/lib/validation_util.cc;drc=6e8b402a6231405b753919029c9027404325ea00;l=45) and the verbose logging will print something like this
 
 ```
 Mojo error in NetworkService:Validation failed for network.mojom.CookieAccessObserver [master] MessageHeaderValidator [VALIDATION_ERROR_UNEXPECTED_STRUCT_HEADER]
 ```
 
-That's it, you now know who are you sending to.
+That's it, now you know who are you sending to.
 
 ## 8.6. Where are my factory ??
 
-I stucked and cannot find any factories within the ports. There are even some ports which never responds to my messages.
+I stucked and cannot find any factories within the leaked ports. There are even some ports which never responds to any of my messages.
 
 At this point (ofc after the CTF has ended), Stephen points out my missing bit: I didn't set the messages' [`sequence_num`](https://source.chromium.org/chromium/chromium/src/+/master:mojo/core/ports/event.h;drc=6e8b402a6231405b753919029c9027404325ea00;l=157). It seems like the Mojo system use this number to prevent message duplication.
 
