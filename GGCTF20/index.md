@@ -223,21 +223,21 @@ NodeController* Core::GetNodeController() {
 
 `this` pointer is always passed as the first argument
 
-```
+```asm
   0x0000000003723fba <+10>:	mov  r15,rdi
 ```
 
 and this time, it is stored in `r15` register
 
 The following code should be equivalent to the `if(!node_controller_)`
-```
+```asm
   0x0000000003723fc9 <+25>: mov  rbx,QWORD PTR [r15+0x30]
   0x0000000003723fcd <+29>: test rbx,rbx
 ```
 
 Or the below should be equivalent to the return
 
-```
+```asm
   0x0000000003723ffd <+77>:  mov  rbx,QWORD PTR [r15+0x30]
   0x0000000003724001 <+81>:  mov  rdi,r14
   0x0000000003724004 <+84>:  call 0xa00fad0
