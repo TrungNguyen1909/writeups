@@ -13,6 +13,8 @@ This is the writeup for the challenge Pillow, created by Samuel Groß(@saelo) of
 
 I didn't solve this challenge during the CTF, when revisiting this challenge after checkout @LinusHenze repo, I have a big learning oppuntunity to checkout XNU exploitation, which was completely new to me.
 
+You may want to checkout the [exploit code](https://github.com/TrungNguyen1909/writeups/tree/master/35c3/pillow)
+
 ## Basic stuff
 Feel free to skip this part if you have already had a basic knowledge in Mach.
 ### Mach

@@ -8,6 +8,8 @@ Language: ["English"]
 # House-of-loop
 Hi everyone, this is the writeup for the challenge _House-of-loop_ in the _AceBear Security Contest 2019_
 
+You may want to checkout the [exploit code](https://github.com/TrungNguyen1909/writeups/tree/master/AceBear2019/house_of_loop)
+
 ## Description
 
 We are given a stripped ELF x64 binary which can be interacted with, our task is to get remote code execution(RCE).

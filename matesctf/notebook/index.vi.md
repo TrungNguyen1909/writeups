@@ -5,7 +5,10 @@ Tags: ["matesCTF", "CTF", "pwn","heap"]
 Language: ["Vietnamese"]
 ---
 
-# Notebook
+Notebook
+===
+
+[Exploit](https://github.com/TrungNguyen1909/writeups/tree/master/matesctf/notebook)
 
 Bài này mình pwn được sau khi được tiền bối *Đào Xuân Nghĩa* thông não sau giờ.
 
@@ -55,7 +58,7 @@ Edit nó bằng vị trí của `canyourunme` là ta có shell.
 
 Như thường lệ, `cat flag` sẽ cho chúng ta flag.
 
-Tham khảo:
+## Reference
 
 Đào Trọng Nghĩa
 

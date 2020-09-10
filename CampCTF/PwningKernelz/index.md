@@ -19,6 +19,8 @@ Of course, I didn't solve this challenge during the time of the CTF. In fact, no
 
 So I decided to pick it up and exploit it with the support of Linus after the CTF ends.
 
+You may want to checkout the [exploit code](https://github.com/TrungNguyen1909/writeups/tree/master/CampCTF/PwningKernelz)
+
 **Update**: the bug has been assigned as [CVE-2019-8781](https://support.apple.com/en-vn/HT210634) by Apple and fixed in the macOS Catalina 10.15 release.
 
 ## Challenge description

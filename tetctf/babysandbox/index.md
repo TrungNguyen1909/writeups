@@ -9,6 +9,8 @@ Language: ["English"]
 
 This is a challenge of TetCTF, which is hosted from Jan 1st to Jan 7th by MeePwn Team of Vietnam
 
+You may want to checkout the [exploit code](https://github.com/TrungNguyen1909/writeups/tree/master/tetctf/babysandbox)
+
 ## Challenge description
 
 We are given 2 binary, one is `sandbox` and the other one is `program`.

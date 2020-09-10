@@ -13,6 +13,8 @@ Language: ["Vietnamese"]
 Bài này mình solve sau giờ :< nhưng vì trước khi kết thúc CTF khoảng 2hr mà chưa mình chưa thấy team nào solved bài này cả,
 nên là mình vẫn mạnh dạn gửi exploit code vào mail tác giả.
 
+[Exploit](https://github.com/TrungNguyen1909/writeups/tree/master/matesctf/KSMASH)
+
 ## Challenge Description
 
 Có một kernel module đang chạy, nhiệm vụ là từ non-root user escape lên r00t để đọc file `/root/flag`

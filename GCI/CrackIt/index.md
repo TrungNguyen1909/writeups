@@ -5,8 +5,13 @@ Tags: ["GCI","CodeIn","Google","easy","reverse"]
 Language: ["English"]
 ---
 
-1stcrackme
------
+CrackIT
+===
+
+Writeup for CrackIt task at Google CodeIn 2019
+
+## 1stcrackme
+
 easy, you can use `strings 1stcrackme` to list all strings in binary
 
 stripped output:
@@ -87,8 +92,7 @@ Enter password: 0x133337
 Success!
 ```
 
-2ndcrackme
------
+## 2ndcrackme
 
 ```
 [user@archlinux Crackit-GCI]$ ./2ndcrackme
@@ -123,8 +127,8 @@ Success!
 ```
 Solved
 
-3rdcrackme
------
+## 3rdcrackme
+
 Okay, I open the binary in GHIDRA
 
 ```c

@@ -8,9 +8,9 @@ Language: ["English"]
 Teleport
 ===
 
-> Please write a full-chain exploit for Chrome. The flag is at /home/user/flag. Maybe there's some way to tele<port> it out of there?
+> Please write a full-chain exploit for Chrome. The flag is at /home/user/flag. Maybe there's some way to tele\<port\> it out of there?
 
-# 1. Story
+## 1. Story
 
 Hi, last week I participated in Google CTF 2020 with my team `pwnPHOfun`
 
@@ -22,31 +22,31 @@ I like to write detailed articles that are understandable and replicable to my p
 <!-- TOC -->
 
 - [Teleport](#teleport)
-- [1. Story](#1-story)
-- [2. Overview](#2-overview)
-  - [2.1. Sandboxed or unsandboxed](#21-sandboxed-or-unsandboxed)
-  - [2.2. Provided primitives](#22-provided-primitives)
-- [3. Leaking the browser process](#3-leaking-the-browser-process)
-- [4. Googling](#4-googling)
-- [5. Leaking the renderer process](#5-leaking-the-renderer-process)
-- [6. Nodes and Ports](#6-nodes-and-ports)
-- [7. Leaking ports' names](#7-leaking-ports-names)
-  - [7.1. Finding offsets](#71-finding-offsets)
-    - [7.1.1. Simple structures](#711-simple-structures)
-    - [7.1.2. F**k C++/Traversing `std::unordered_map`](#712-fk-ctraversing-stdunordered_map)
-- [8. What do we do with stolen ports?](#8-what-do-we-do-with-stolen-ports)
-  - [8.1. Factory of network requests](#81-factory-of-network-requests)
-  - [8.2. Making the leaked ports ours](#82-making-the-leaked-ports-ours)
-    - [8.2.1. Calling functions from shellcode](#821-calling-functions-from-shellcode)
-  - [8.3. Sending our messages](#83-sending-our-messages)
-  - [8.4. Writing our messages](#84-writing-our-messages)
-  - [8.5. To know who our receivers are](#85-to-know-who-our-receivers-are)
-  - [8.6. Where are my factory ??](#86-where-are-my-factory-)
-    - [8.6.1. Setting the sequence_num](#861-setting-the-sequence_num)
-    - [8.6.2. Getting the correct function parameters](#862-getting-the-correct-function-parameters)
-- [9. Closing words](#9-closing-words)
-  - [9.1. Shoutout](#91-shoutout)
-  - [9.2. Reference](#92-reference)
+  - [1. Story](#1-story)
+  - [2. Overview](#2-overview)
+    - [2.1. Sandboxed or unsandboxed](#21-sandboxed-or-unsandboxed)
+    - [2.2. Provided primitives](#22-provided-primitives)
+  - [3. Leaking the browser process](#3-leaking-the-browser-process)
+  - [4. Googling](#4-googling)
+  - [5. Leaking the renderer process](#5-leaking-the-renderer-process)
+  - [6. Nodes and Ports](#6-nodes-and-ports)
+  - [7. Leaking ports' names](#7-leaking-ports-names)
+    - [7.1. Finding offsets](#71-finding-offsets)
+      - [7.1.1. Simple structures](#711-simple-structures)
+      - [7.1.2. F**k C++/Traversing `std::unordered_map`](#712-fk-ctraversing-stdunordered_map)
+  - [8. What do we do with stolen ports?](#8-what-do-we-do-with-stolen-ports)
+    - [8.1. Factory of network requests](#81-factory-of-network-requests)
+    - [8.2. Making the leaked ports ours](#82-making-the-leaked-ports-ours)
+      - [8.2.1. Calling functions from shellcode](#821-calling-functions-from-shellcode)
+    - [8.3. Sending our messages](#83-sending-our-messages)
+    - [8.4. Writing our messages](#84-writing-our-messages)
+    - [8.5. To know who our receivers are](#85-to-know-who-our-receivers-are)
+    - [8.6. Where are my factory ??](#86-where-are-my-factory-)
+      - [8.6.1. Setting the sequence_num](#861-setting-the-sequence_num)
+      - [8.6.2. Getting the correct function parameters](#862-getting-the-correct-function-parameters)
+  - [9. Closing words](#9-closing-words)
+    - [9.1. Shoutout](#91-shoutout)
+    - [9.2. Reference](#92-reference)
 
 <!-- /TOC -->
 
@@ -54,7 +54,7 @@ You may want to checkout the [exploit code](https://github.com/TrungNguyen1909/g
 
 No IDA/Ghidra were used during the creation of this work. I used only GDB.
 
-# 2. Overview
+## 2. Overview
 
 The challenge files include a patch for chromium version 84.0.4147.94,
 which basically has 2 features.
@@ -63,7 +63,7 @@ The first one is the `Pwn` object, and a code execution(?) primitive `Mojo::rce`
 
 Both could be trivially used through `MojoJS`, which is enabled for us.
 
-## 2.1. Sandboxed or unsandboxed
+### 2.1. Sandboxed or unsandboxed
 
 On the first sight, the challenge seems unexpectedly easy, or wasn't it ;)
 
@@ -71,20 +71,20 @@ But the `rce` primitive only provides us code execution inside the _renderer_ pr
 
 The `Pwn` object is on the **unsandboxed** _browser_ process, provides an address leak of itself and an arbitrary memory read primitive.
 
-## 2.2. Provided primitives
+### 2.2. Provided primitives
 
 So we have 2 primitives
 
 - Sandboxed code execution inside _renderer_ process
 - Arbitrary read inside _browser_ process
 
-# 3. Leaking the browser process
+## 3. Leaking the browser process
 
 The primitive `Pwn::this()` will return the address of itself, which is a C++ object.
 
 As every C++ object have its `vtable`, containing pointers to all instance methods, located at offset `0x0`. By dereference the pointer returned by `Pwn::this()` twice, you will get a function pointer. Subtracting it to a constant offset, you can find the `_text` base of the browser's process.
 
-# 4. Googling
+## 4. Googling
 
 Because no obvious way to get code execution inside the browser's process, I started looking around on the internet and found [this article](https://googleprojectzero.blogspot.com/2020/02/escaping-chrome-sandbox-with-ridl.html),
 
@@ -104,7 +104,7 @@ Wasn't that a smart way to make people read your article and watch your talk? ;)
 
 Anyway, I highly recommend you watch those to get a basic overview of the solution or even solve it yourself.
 
-# 5. Leaking the renderer process
+## 5. Leaking the renderer process
 
 With the `rce` primitive in our hands, the sky is your limit...
 
@@ -145,7 +145,7 @@ then read it back in JavaScript.
 For me, I read the return pointer from `[rsp]` to get a function pointer,
 and derive the renderer's `_text` base.
 
-# 6. Nodes and Ports
+## 6. Nodes and Ports
 
 Node could be understood as _process_; when you launch chrome, it will spawn multiple children to isolate their data in case of compromisation, and each of them is a node.
 
@@ -182,7 +182,7 @@ class Port : public base::RefCountedThreadSafe<Port> {
 }
 ```
 
-# 7. Leaking ports' names
+## 7. Leaking ports' names
 
 A node keeps track of its name, its local ports, and its remote ports (ports from another nodes that is known to this node)
 
@@ -202,9 +202,9 @@ One possible pointer path is `g_core->node_controller_->node_`
 
 Just traverse that and dump all the ports' names.
 
-## 7.1. Finding offsets
+### 7.1. Finding offsets
 
-### 7.1.1. Simple structures
+#### 7.1.1. Simple structures
 
 Finding offsets isn't a trivial task when you haven't familiar with assembly and memory, but a way to do that is to disassemble functions where that field is accessed.
 
@@ -249,7 +249,7 @@ So the offset is probably `+0x30`.
 
 The way of finding the remaining offsets is left as an exercise to the readers.
 
-### 7.1.2. F**k C++/Traversing `std::unordered_map`
+#### 7.1.2. F**k C++/Traversing `std::unordered_map`
 
 Okay, now how do we dump all ports?
 
@@ -324,9 +324,9 @@ With the `.begin()` pointer, it is possible to iterate through all elements just
 
 [Reference](http://llvm.org/viewvc/llvm-project/lldb/trunk/examples/synthetic/unordered_multi.py?view=markup&pathrev=189964)
 
-# 8. What do we do with stolen ports?
+## 8. What do we do with stolen ports?
 
-## 8.1. Factory of network requests
+### 8.1. Factory of network requests
 
 One of the good candidates for a good target is a _privileged_ `URLLoaderFactory`, which relies in the network service, and has the ability to make network requests ([`URLLoaderFactory::CreateLoaderAndStart`](https://source.chromium.org/chromium/chromium/src/+/master:services/network/url_loader_factory.h;drc=6e8b402a6231405b753919029c9027404325ea00;bpv=1;bpt=1;l=57?q=URLLoaderFactory::CreateLoaderAndStart)), with files
 
@@ -342,7 +342,7 @@ If we could get such factory from the browser,  we could upload any files to our
 
 To do so is pretty trivial, just make sure to use HTTPS and you are good to go with the service worker.
 
-## 8.2. Making the leaked ports ours
+### 8.2. Making the leaked ports ours
 
 To send messages to the leaked ports' names, we need to register it to our node. Below is my way of doing it:
 
@@ -351,7 +351,7 @@ To send messages to the leaked ports' names, we need to register it to our node.
 
 After doing that, the leaked port will be inserted into your node's `ports_` map.
 
-### 8.2.1. Calling functions from shellcode
+#### 8.2.1. Calling functions from shellcode
 
 It is impractical to run an assembler in the exploit to compile your shellcode with the functions' addresses, as they shift around all the time under ASLR.
 
@@ -367,7 +367,7 @@ In my shellcode, there will be a common pattern, which looks like this
 
 The `0x4141414141414141` value will be encoded as it as 8 consecutive little-endian bytes in the machine code. The JavaScript code will be responsible to replace it with the correct address calculated from the leak.
 
-## 8.3. Sending our messages
+### 8.3. Sending our messages
 
 In the `Core` object, there are some interesting APIs
 
@@ -389,7 +389,7 @@ Later, I found the function [`mojo::WriteMessageRaw`](https://source.chromium.or
 
 Unfortunately, it takes a C++ object [`MessagePipeHandle`](https://source.chromium.org/chromium/chromium/src/+/master:mojo/public/cpp/system/message_pipe.h;drc=6e8b402a6231405b753919029c9027404325ea00;bpv=1;bpt=1;l=30?gsn=MessagePipeHandle), which is not so easy to create. So all I can do was replicate its function calls.
 
-## 8.4. Writing our messages
+### 8.4. Writing our messages
 If you take a look at the binding JS code (i.e. `URLLoaderFactoryProxy.prototype.createLoaderAndStart`), you will see that it uses the JavaScript API `MessageV0Builder` to craft a message. That function will return a `Message` object, which contains a buffer, and an array of handles.
 
 Our message obviously should contain the buffer, but what are the handles?
@@ -432,7 +432,7 @@ It seems to create a MessagePipe, which will create 2 `MojoHandles`: `handle0` a
 
 Lucky to us, handles are [generated increasingly](https://source.chromium.org/chromium/chromium/src/+/master:mojo/core/handle_table.cc;drc=6e8b402a6231405b753919029c9027404325ea00;l=56). So we can predict the handles of the `Ptr` and `InterfaceRequest` from the handle of our port.
 
-## 8.5. To know who our receivers are
+### 8.5. To know who our receivers are
 
 While creating this exploit, I ran into a programming bug which prevents my message buffer being copied. This leads me to discover a way to know which object is behind the port:
 
@@ -444,7 +444,7 @@ Mojo error in NetworkService:Validation failed for network.mojom.CookieAccessObs
 
 That's it, now you know who are you sending to.
 
-## 8.6. Where are my factory ??
+### 8.6. Where are my factory ??
 
 I stucked and cannot find any factories within the leaked ports. There are even some ports which never responds to any of my messages.
 
@@ -452,21 +452,21 @@ At this point (ofc after the CTF has ended), Stephen points out my missing bit: 
 
 [This number is increased by one when a message is sent.](https://source.chromium.org/chromium/chromium/src/+/master:mojo/core/ports/node.cc;drc=6e8b402a6231405b753919029c9027404325ea00;l=1293) Fortunately, the correct `sequence_num` is stored in the `Port` object in the [field `next_sequence_num_to_send`](https://source.chromium.org/chromium/chromium/src/+/master:mojo/core/ports/port.h;drc=6e8b402a6231405b753919029c9027404325ea00;l=111), which can be leaked from where we found our ports in browser process's memory.
 
-### 8.6.1. Setting the sequence_num
+#### 8.6.1. Setting the sequence_num
 
 Let me remind you that `MojoMessageHandle` is actually a [pointer](https://source.chromium.org/chromium/chromium/src/+/master:mojo/core/core.cc;drc=6e8b402a6231405b753919029c9027404325ea00;l=349) to a `UserMessageEvent`. Unfortunately, the function `set_sequence_num` is inlined so the offset isn't free. However, you could get it by disassembling [`Node::PrepareToForwardUserMessage`](https://source.chromium.org/chromium/chromium/src/+/master:mojo/core/ports/node.cc;drc=6e8b402a6231405b753919029c9027404325ea00;bpv=1;bpt=1;l=1230?gsn=PrepareToForwardUserMessage)
 
-### 8.6.2. Getting the correct function parameters
+#### 8.6.2. Getting the correct function parameters
 
 This is a trivial part. Just take a look at the JavaScript Mojo binding code.
 
-# 9. Closing words
+## 9. Closing words
 
 The devil is actually in the details, isn't it ;)
 
-## 9.1. Shoutout
+### 9.1. Shoutout
 - To Stephen, for creating this challenge, and pointing out my missing bit (after the CTF, ofc). Thank you a lot.
   
-## 9.2. Reference
+### 9.2. Reference
 - [Stephen's article on P0 blog](https://googleprojectzero.blogspot.com/2020/02/escaping-chrome-sandbox-with-ridl.html)
 - [Stephen's talk at OffensiveCon20](https://www.youtube.com/watch?v=ugZzQvXUTIk)

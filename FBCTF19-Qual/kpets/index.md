@@ -5,16 +5,10 @@ Tags: ["FBCTF", "CTF", "pwn","kernel","linux","race-condition","double-fetch"]
 Language: ["English"]
 ---
 
-```
- __  __     ______   ______     ______   ______    
-/\ \/ /    /\  == \ /\  ___\   /\__  _\ /\  ___\   
-\ \  _"-.  \ \  _-/ \ \  __\   \/_/\ \/ \ \___  \  
- \ \_\ \_\  \ \_\    \ \_____\    \ \_\  \/\_____\ 
-  \/_/\/_/   \/_/     \/_____/     \/_/   \/_____/ 
+kpets
+===
 
-																									 
-welcome to Kernel Pets Simulator!
-```
+> welcome to Kernel Pets Simulator!
 
 > We wrote a pet store application that was too slow, so we made a kernel module for it instead.
 
@@ -22,7 +16,9 @@ welcome to Kernel Pets Simulator!
 
 Hi everyone, this is the writeup for the Facebook CTF 2019 Qualification Round kpets challenge
 
-# Description
+You may want to checkout the [exploit code](https://github.com/TrungNguyen1909/writeups/tree/master/FBCTF19-Qual/kpets)
+
+## Description
 
 We are given a linux kernel module, packed with a qemu VM that runs Linux 5.1.5.
 
@@ -46,7 +42,7 @@ Most importantly, it checks that the first byte shouldn't be 0xAA
 
 One more thing, by reversing (which I haven't found during the CTF 😭), we can see that it saves the pets backward.
 
-# Bug
+## Bug
 
 ```c
 int dev_write(__int64 a1, char *buf, __int64 sz)
@@ -110,7 +106,7 @@ From here, we have a buffer-overflow with arbitrary data's length on the name fi
 
 To exploit this, we can create a new thread that repeatedly changes the length value in the userspace.
 
-# The remaining road to the flag....
+## The remaining road to the flag....
 
 Well, I did stop here 8 hours before the CTF ends....
 
@@ -142,7 +138,7 @@ Then use the race condition to make the next pet's name overflows to the previou
 
 Then, we got the flag.
 
-# Shoutout
+## Shoutout
 
 - pippinthedog from Facebook CTF for bringing a great challenge for me.
 

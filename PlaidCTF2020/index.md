@@ -16,6 +16,8 @@ As usual, I got the flag after the CTF has ended :<
 
 Well, currently I am not in any active teams, so I decided to pick a hard challenge and do it on my own.
 
+You may want to checkout the [exploit code](https://github.com/TrungNguyen1909/writeups/tree/master/PlaidCTF2020)
+
 ## Challenge Description
 ```
 Chromium commit detached at 81.0.4044.92 (commit hash 82e68b9038ab5679543b300b42202bc053c50930).

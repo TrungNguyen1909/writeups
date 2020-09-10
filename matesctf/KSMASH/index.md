@@ -13,6 +13,8 @@ This is a Linux Kernel Module(LKM) exploitation challenge by nyaacate@gmail.com 
 I solved this challenge overtime :<
 But It seems that no team solved this so I still sent the exploit to the challenge author for testing and also wrote this writeup.
 
+You may want to checkout the [exploit code](https://github.com/TrungNguyen1909/writeups/tree/master/matesctf/KSMASH)
+
 ## Challenge Description
 
 A kernel module is running, escape from non-root user to r00t to read `/root/flag`

@@ -5,7 +5,9 @@ Tags: ["DEFCON-CTF", "CTF", "pwn","xnu","IOKit","race-condition","double-fetch"]
 Language: ["English"]
 ---
 
-# IPwnKit
+IPwnKit
+===
+
 > Come and take a bite of the Apple!
 
 > We have reserved you a very special place at the WWPC (World Wide Pwning Conference).
@@ -26,10 +28,12 @@ Language: ["English"]
 
 Hi everyone, this is the writeup for the DEFCON 26 Qualification Round's iPwnKit challenge
 
-# Prerequisites
+You may want to checkout the [exploit code](https://github.com/TrungNguyen1909/writeups/tree/master/DEFCON26-Qual/iPwnKit/)
+
+## Prerequisites
 - IOKit basic communication. You can read chapter 5 of the book _OS X and iOS Kernel Programming_.
 
-# Description
+## Description
 
 The author gives us a macOS IOKit kernel extension and a kernel binary, and our job is to get root and read that file without panic the kernel.
 
