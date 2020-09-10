@@ -1,5 +1,5 @@
 ---
-title: "Google CTF 2020 teleport Chromium sandbox escape"
+title: "Google CTF 2020 teleport: Chromium sandbox escape"
 date: 2020-09-02T19:48:00+0700
 Tags: ["GGCTF2020", "CTF", "pwn", "sandbox", "chromium", "browser", "mojo", "reversing", "offset"]
 Language: ["English"]

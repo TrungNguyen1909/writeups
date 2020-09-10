@@ -1,5 +1,5 @@
 ---
-title: "pwning your kernelz"
+title: "pwning your kernelz: macOS 0day LPE"
 date: 2019-09-04T23:38:50+0700
 Tags: ["Camp-CTF","pwn","kernel","xnu","0day"]
 Language: ["English"]

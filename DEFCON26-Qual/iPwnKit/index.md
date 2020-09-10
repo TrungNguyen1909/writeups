@@ -1,5 +1,5 @@
 ---
-title: "IPwnKit DEFCON CTF 26 Qualification Round"
+title: "IPwnKit DEFCON CTF 26 QR"
 date: 2019-04-21T00:46:45+0700
 Tags: ["DEFCON-CTF", "CTF", "pwn","xnu","IOKit","race-condition","double-fetch"]
 Language: ["English"]

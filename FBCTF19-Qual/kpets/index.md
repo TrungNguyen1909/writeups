@@ -1,5 +1,5 @@
 ---
-title: "kpets FacebookCTF 2019 Qualification Round"
+title: "kpets FacebookCTF 2019 QR"
 date: 2019-06-12T23:15:34+0700
 Tags: ["FBCTF", "CTF", "pwn","kernel","linux","race-condition","double-fetch"]
 Language: ["English"]
