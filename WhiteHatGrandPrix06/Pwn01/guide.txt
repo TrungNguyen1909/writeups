@@ -1,0 +1,15 @@
+
+Command line to start the virtual machine:
+-----------------
+qemu-system-x86_64 -m 2G -smp 2 \
+    -kernel ./vmlinuz-5.0.0-61-generic \
+    -append "console=ttyS0 root=/dev/sda nokaslr nosmep nopti nosmap earlyprintk=serial" \
+    -drive file=./disk.img \
+    -net user,host=10.0.2.11,hostfwd=tcp:127.0.0.1:10023-:22 \
+    -net nic,model=e1000 -enable-kvm -nographic -snapshot
+-----------------
+You can login as root without password.
+
+Install scull.ko:
+1. Upload scull.ko and scull_load into the same folder
+2. Cd into the folder and run ./scull_load
